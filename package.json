@@ -1,0 +1,18 @@
+{
+  "name": "gbc",
+  "version": "1.0.0",
+  "description": "A college website",
+  "license": "ISC",
+  "author": "Anamika Singh",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "dotenv": "^18.0.2",
+    "ejs": "^6.0.1",
+    "ejs-mate": "^4.0.0",
+    "express": "^5.2.1"
+  }
+}

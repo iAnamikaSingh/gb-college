@@ -1,0 +1,45 @@
+<header>
+  <nav aria-label="Main navigation">
+    <div class="logo-container">
+      <img
+        class="logo-img"
+        src="/images/GBCIcon.png"
+        alt="G.B. College Ramgarh Logo"
+      />
+      <strong>GB College Ramgarh</strong>
+    </div>
+    <button class="menu-toggle" aria-label="Toggle navigation" aria-expanded="false">
+    <i class="fa-solid fa-bars"></i>
+  </button>
+    <ul class="nav-links">
+      <li>
+        <a href="/">Home</a>
+      </li>
+
+      <li>
+        <a href="/affiliation">Affiliation Letter</a>
+      </li>
+
+      <li>
+        <a href="/programs" title="UG Programs offered">Programs</a>
+      </li>
+
+      <li>
+        <a href="/seat-matrix" title="Seat distribution among different programs">Seat Matrix</a>
+      </li>
+
+      <li>
+        <a href="/feedback">Feedback</a>
+      </li>
+    </ul>
+  </nav>
+</header>
+<script>
+  const menuButton = document.querySelector(".menu-toggle");
+  const navLinks = document.querySelector(".nav-links");
+
+  menuButton.addEventListener("click", () => {
+    const isOpen = navLinks.classList.toggle("active");
+    menuButton.setAttribute("aria-expanded", isOpen);
+  });
+</script>
