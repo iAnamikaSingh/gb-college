@@ -1,5 +1,7 @@
 <% layout("layouts/boilerplate") %>
-
+<% if (pageStyles) { %>
+  <link rel="stylesheet" href="<%= pageStyles %>" />
+<% } %>
 <h1>Programs offered by GB College Ramgarh</h1>
 <div class="program-container">
   <div class="specific-program">

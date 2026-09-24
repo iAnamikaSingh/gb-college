@@ -31,13 +31,15 @@ app.get("/feedback", (req, res) => {
 });
 app.get("/seat-matrix", (req, res) => {
     res.render("pages/seat-matrix", {
-        title: "Seat Matrix | GB College Ramgarh"
+        title: "Seat Matrix | GB College Ramgarh",
+        pageStyles: "/css/pages/seat-matrix.css"
     });
   
 });
 app.get("/programs", (req, res) => {
     res.render("pages/programs", {
-        title: "Programs Offered | GB College Ramgarh"
+        title: "Programs Offered | GB College Ramgarh",
+        pageStyles: "/css/pages/program.css"
     });
   
 });
@@ -46,6 +48,13 @@ app.get("/affiliation", (req, res) => {
         title: "Affiliation | GB College Ramgarh"
     });
   
+});
+app.use((req, res) => {
+    res.status(404).render("pages/error", {
+        statusCode: 404,
+        message: "Page Not Found",
+        title:"Error"
+    });
 });
 app.listen(PORT, () => {
     console.log(`server is listening on port ${PORT}`);
