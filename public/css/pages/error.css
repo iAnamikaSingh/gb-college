@@ -1,0 +1,69 @@
+/* Error Page */
+
+.error-page {
+  min-height: 70vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 40px 20px;
+}
+
+.error-page h1 {
+  font-size: 6rem;
+  font-weight: 700;
+  margin: 0;
+  line-height: 1;
+  color: #121236;
+}
+
+.error-page h2 {
+  font-size: 1.5rem;
+  font-weight: 500;
+  margin: 15px 0 20px;
+  color: #334155;
+}
+
+.error-page i {
+  font-size: 4rem;
+  margin-bottom: 25px;
+  color: #64748b;
+}
+
+.error-page a {
+  display: inline-block;
+  padding: 12px 24px;
+  background-color: #facc15;;
+  color: #ffffff;
+  text-decoration: none;
+  border-radius: 6px;
+  font-size: 1rem;
+  font-weight: 500;
+  transition: background-color 0.2s ease;
+}
+
+.error-page a:hover {
+  background-color: #e9bf18;;
+}
+
+/* Mobile */
+
+@media (max-width: 600px) {
+  .error-page {
+    min-height: 65vh;
+    padding: 30px 15px;
+  }
+
+  .error-page h1 {
+    font-size: 4.5rem;
+  }
+
+  .error-page h2 {
+    font-size: 1.2rem;
+  }
+
+  .error-page i {
+    font-size: 3.5rem;
+  }
+}

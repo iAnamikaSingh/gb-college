@@ -2,6 +2,7 @@
 @import "pages/program.css";
 @import "pages/seat-matrix.css";
 @import "pages/home.css";
+@import "pages/error.css";
 
 /* Remove default browser spacing */
 * {
