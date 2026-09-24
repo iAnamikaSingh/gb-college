@@ -1,3 +1,8 @@
+@import "layout.css";
+@import "pages/program.css";
+@import "pages/seat-matrix.css";
+@import "pages/home.css";
+
 /* Remove default browser spacing */
 * {
     margin: 0;
@@ -11,22 +16,18 @@ html, body{
 
 body {
     font-family: "Poppins", sans-serif;
-    min-height: 100vh;
     display: flex;
+    min-height: 100vh;
     flex-direction: column;
     margin-top:100px;
 }
 
-
-main{
-    flex:1;
-}
-
-
 main{
     display:flex;
-    flex-direction: column;
+    flex-direction: column;  
     padding:0 100px;
+    flex:1;
+    
 }
 h1{
     color: #555454;
@@ -66,5 +67,8 @@ h1{
 @media (max-width: 910px){
     main{
         padding : 0 20px;
+    }
+    th, td{
+        padding:6px;
     }
 } 

@@ -1,0 +1,31 @@
+.college-desc {
+  line-height: 2rem;
+  font-size: large;
+
+}
+.content{
+  display: flex;
+  flex-direction: column;
+  row-gap: 36px;
+}
+.recognition-section{
+  display:flex;
+  flex-direction: column;
+  row-gap: 24px;
+}
+.recognition-content a {
+  color: #1d4ed8;
+  text-decoration: none;
+  transition: color 0.3s ease, text-decoration 0.3s ease;
+}
+
+.recognition-content a:hover {
+  color: #dc2626;
+  text-decoration: underline;
+}
+@media(max-width:800px){
+  h1{
+    font-size: larger;
+    line-height: normal;
+  }
+}

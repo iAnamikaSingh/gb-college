@@ -32,14 +32,13 @@ app.get("/feedback", (req, res) => {
 app.get("/seat-matrix", (req, res) => {
     res.render("pages/seat-matrix", {
         title: "Seat Matrix | GB College Ramgarh",
-        pageStyles: "/css/pages/seat-matrix.css"
+    
     });
   
 });
 app.get("/programs", (req, res) => {
     res.render("pages/programs", {
         title: "Programs Offered | GB College Ramgarh",
-        pageStyles: "/css/pages/program.css"
     });
   
 });
