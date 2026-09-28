@@ -17,6 +17,14 @@ app.engine("ejs", ejsMate);
 app.set("views", path.join(__dirname, "views"));
 app.use(express.static(path.join(__dirname, 'public')));
 
+// canonical middleware, before the routes
+const BASE_URL = 'https://gbc-ramgarh.onrender.com';
+app.use((req, res, next) => {
+  res.locals.canonical = BASE_URL + req.path;
+  next();
+});
+
+//routes
 app.get("/", (req, res) => {
     res.render("pages/home", {
         title: "Home | GB College Ramgarh",
