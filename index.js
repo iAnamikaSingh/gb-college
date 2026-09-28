@@ -51,7 +51,8 @@ app.use((req, res) => {
     res.status(404).render("pages/error", {
         statusCode: 404,
         message: "Page Not Found",
-        title:"Error"
+        title:"Error",
+        description: "The requested page could not be found."
     });
 });
 app.listen(PORT, () => {
