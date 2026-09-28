@@ -19,19 +19,15 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.get("/", (req, res) => {
     res.render("pages/home", {
-        title: "Home | GB College Ramgarh"
+        title: "Home | GB College Ramgarh",
+        description:"Gram Bharti College, Ramgarh, Kaimur (Bihar): UGC-registered VKSU constituent college offering B.A., B.Sc., B.Com., BCA and BBA. Explore programmes and seats."
     }) ;
-  
-});
-app.get("/feedback", (req, res) => {
-    res.render("pages/feedback", {
-        title: "Feedback | GB College Ramgarh"
-    });
   
 });
 app.get("/seat-matrix", (req, res) => {
     res.render("pages/seat-matrix", {
         title: "Seat Matrix | GB College Ramgarh",
+        description:"Programme-wise seat availability at Gram Bharti College, Ramgarh, Kaimur (Bihar) for B.A., B.Sc., B.Com., BCA and BBA courses."
     
     });
   
@@ -39,12 +35,7 @@ app.get("/seat-matrix", (req, res) => {
 app.get("/programs", (req, res) => {
     res.render("pages/programs", {
         title: "Programs Offered | GB College Ramgarh",
-    });
-  
-});
-app.get("/affiliation", (req, res) => {
-    res.render("pages/affiliation", {
-        title: "Affiliation | GB College Ramgarh"
+        description:"Explore undergraduate programmes at Gram Bharti College, Ramgarh: B.A., B.Sc., B.Com., BCA and BBA  details."
     });
   
 });
