@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://gbc-ramgarh.onrender.com/sitemap.xml
