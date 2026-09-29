@@ -25,7 +25,7 @@ btn.addEventListener('click', () => {
       const km = haversineKm(user, PLACE);
       out.innerHTML =
         `You are about <strong>${km.toFixed(1)} km</strong> away (straight line). ` +
-        `<a target="_blank" rel="noopener" href="https://www.google.com/maps/dir/?api=1&origin=${user.lat},${user.lng}&destination=${PLACE.lat},${PLACE.lng}">Get directions</a>`;
+        `<a target="_blank" rel="noopener" href="https://www.google.com/maps/dir/?api=1&origin=${user.lat},${user.lng}&destination=${PLACE.lat},${PLACE.lng}">Get directions<i class="fa-solid fa-diamond-turn-right"></i></a>`;
     },
     (err) => {
       const messages = {

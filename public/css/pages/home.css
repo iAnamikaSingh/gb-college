@@ -35,6 +35,52 @@
   height: 100%;
   border: 0;
 }
+button{
+  padding:0.8rem;
+  font-size: 1.2rem;
+  border:none;
+}
+#locate-btn{
+  background-color: #fabd15;
+  border-radius: 0.5rem;
+  width: min(100%, 400px);
+  align-self: center;
+  transition-duration: 0.6s ;
+}
+#locate-btn:hover{
+  background-color: #e5a900;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+#distance-result {
+  margin: 0 auto;
+  text-align: center;
+  line-height: 1.6;
+}
+
+#distance-result strong {
+  color: #166534;
+  font-weight: 700;
+}
+
+#distance-result a {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin-left: 0.4rem;
+  color: #1d4ed8;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+#distance-result a:hover {
+  text-decoration: underline;
+}
+
+#distance-result a:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 3px;
+}
 @media(max-width:800px){
   h1{
     font-size: larger;
