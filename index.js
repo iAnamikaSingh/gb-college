@@ -40,6 +40,13 @@ app.get("/seat-matrix", (req, res) => {
     });
   
 });
+app.get("/pyq/bca", (req, res) => {
+    res.render("pages/pyq/bca", {
+        title: "Sem-2 2025-2028 Exam Paper | GB College Ramgarh",
+        description:"Download the question paper of BCA Sem-2 2025-2028 and their detailed solution at gbc-ramgarh.onrender.com"
+    });
+  
+});
 app.get("/programs", (req, res) => {
     res.render("pages/programs", {
         title: "Programs Offered | GB College Ramgarh",
