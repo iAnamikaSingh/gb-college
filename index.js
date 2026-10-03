@@ -3,6 +3,7 @@ import path from "path";
 import { fileURLToPath } from 'url';
 import ejsMate from "ejs-mate";
 import dotenv from "dotenv";
+import connectDB from "./models/db.js";
 dotenv.config();
 
 const app = express();
@@ -76,6 +77,7 @@ app.use((req, res) => {
         description: "The requested page could not be found."
     });
 });
+connectDB();
 app.listen(PORT, () => {
     console.log(`server is listening on port ${PORT}`);
 });
