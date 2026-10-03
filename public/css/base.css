@@ -4,6 +4,7 @@
 @import "pages/home.css";
 @import "pages/error.css";
 @import "pages/pyq.css";
+@import "exampaper&solution-upload.css";
 
 /* Remove default browser spacing */
 * {

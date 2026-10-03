@@ -54,6 +54,20 @@ app.get("/programs", (req, res) => {
     });
   
 });
+app.get("/admin/pyq/bca/new/exampaper", (req, res) => {
+    res.render("pages/admin/pyq/bca/add-exampaper", {
+        title: "Add BCA Papers | Admin | GB College Ramgarh",
+        description: "Admin form to upload a combined question paper by semester and year.",
+        noindex: true
+    });
+});
+app.get("/admin/pyq/bca/new/exampaper-solution", (req, res) => {
+    res.render("pages/admin/pyq/bca/add-exampaper-solution", {
+        title: "Add BCA Paper Solutions | Admin | GB College Ramgarh",
+        description: "Admin form to upload solution PDF for each BCA subject, by semester and year.",
+        noindex: true
+    });
+});
 app.use((req, res) => {
     res.status(404).render("pages/error", {
         statusCode: 404,

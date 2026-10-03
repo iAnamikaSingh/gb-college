@@ -1,13 +1,14 @@
+
 <% layout("layouts/boilerplate") %>
 
 <section class="pyq-page admin-form-page">
   <div class="admin-form-card">
     <header class="admin-form-header">
       <p class="admin-form-eyebrow">BCA Admin</p>
-      <h1>Add Exam Solution</h1>
+      <h1>Add Combined Question Paper</h1>
     </header>
 
-    <form class="admin-form">
+    <form action="/admin/pyq/bca/papers" method="post" class="admin-form">
       <div class="field-group">
         <label for="batch">Which batch do you belong to?</label>
         <select id="batch" name="batch" class="form-select" required>
@@ -29,19 +30,15 @@
         </select>
       </div>
 
-      <div class="paper-section">
-        <div class="section-heading">
-          <h3>Upload solutions of Papers</h3>
-          <span>Select a semester to view paper groups</span>
-        </div>
-
-        <div id="solution-buttons" class="solution-buttons" aria-live="polite"></div>
+      <div class="field-group">
+        <label for="group">Select Group</label>
+        <select id="group" name="group" class="form-select" required disabled>
+          <option value="">Select semester first</option>
+        </select>
       </div>
 
       <div class="form-actions">
-        <button type="button" id="finish-button" class="paper-button paper-button-secondary">
-          Finish
-        </button>
+        <button type="submit" class="paper-button">Add combined PDF</button>
       </div>
     </form>
   </div>
@@ -49,32 +46,41 @@
 
 <script>
   const semesterSelect = document.querySelector("#semester");
-  const solutionButtons = document.querySelector("#solution-buttons");
-  const finishButton = document.querySelector("#finish-button");
+  const groupSelect = document.querySelector("#group");
 
   semesterSelect.addEventListener("change", function () {
     const semester = this.value;
-    solutionButtons.innerHTML = "";
 
-    if (!semester) return;
+    groupSelect.innerHTML = "";
+
+    if (!semester) {
+      groupSelect.disabled = true;
+
+      const option = document.createElement("option");
+      option.value = "";
+      option.textContent = "Select semester first";
+
+      groupSelect.appendChild(option);
+      return;
+    }
+
+    groupSelect.disabled = false;
+
+    const defaultOption = document.createElement("option");
+    defaultOption.value = "";
+    defaultOption.textContent = "Select group";
+
+    groupSelect.appendChild(defaultOption);
 
     for (let i = 1; i <= 5; i++) {
-      const group = `${semester}BCA${i}`;
-
-      const button = document.createElement("button");
-      button.type = "button";
-      button.className = "solution-btn";
-      button.textContent = group;
-
-      button.addEventListener("click", function () {
-        window.location.href = `/admin/pyq/bca/solution/${group}`;
-      });
-
-      solutionButtons.appendChild(button);
+      const option = document.createElement("option");
+      option.value = `${semester}BCA${i}`;
+      option.textContent = `${semester}BCA${i}`;
+      groupSelect.appendChild(option);
     }
   });
-
-  finishButton.addEventListener("click", function () {
-    window.location.href = "/admin/pyq/bca";
-  });
 </script>
+
+
+
+
