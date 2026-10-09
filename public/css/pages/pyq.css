@@ -1,31 +1,54 @@
 .pyq-page {
   width: 100%;
   max-width: 1050px;
-  margin: 2rem auto 0;
+  margin: 1.75rem auto 0;
   color: #252525;
 }
 
 .pyq-heading {
-  margin-bottom: 1.75rem;
+  margin-bottom: 1.5rem;
+  padding-bottom: 1.25rem;
+  border-bottom: 1px solid #d9e3e5;
 }
 
 .pyq-eyebrow {
-  margin-bottom: 0.4rem;
+  margin-bottom: 0.35rem;
   color: #187b79;
-  font-size: 0.8rem;
+  font-size: 0.75rem;
   font-weight: 700;
+  letter-spacing: 0.06em;
   text-transform: uppercase;
 }
 
 .pyq-heading h1 {
   color: #16213e;
-  font-size: 2.2rem;
+  font-size: 2rem;
   line-height: 1.2;
 }
 
 .pyq-subtitle {
   margin-top: 0.55rem;
   color: #5c6470;
+  line-height: 1.5;
+}
+
+.pyq-batch {
+  padding: 1.4rem 0 1.6rem;
+  border-bottom: 1px solid #d9e3e5;
+}
+
+.pyq-batch:first-of-type {
+  padding-top: 0;
+}
+
+.pyq-batch-heading {
+  margin-bottom: 1rem;
+}
+
+.pyq-batch-heading h2 {
+  color: #16213e;
+  font-size: 1.2rem;
+  line-height: 1.3;
 }
 
 .combined-paper {
@@ -33,16 +56,17 @@
   align-items: center;
   justify-content: space-between;
   gap: 1.5rem;
-  margin-bottom: 2.25rem;
-  padding: 1.25rem 1.5rem;
-  border-left: 4px solid #facc15;
-  background: #f3f6f8;
+  margin-bottom: 1.5rem;
+  padding: 1rem 1.15rem;
+  border: 1px solid #d9e3e5;
+  border-radius: 6px;
+  background: #f5f9f8;
 }
 
-.combined-paper h2,
-.subject-papers h2 {
+.combined-paper h3,
+.subject-papers h3 {
   color: #16213e;
-  font-size: 1.2rem;
+  font-size: 1rem;
 }
 
 .combined-paper p {
@@ -63,9 +87,9 @@
   align-items: center;
   justify-content: center;
   padding: 0.6rem 0.9rem;
-  border: 1px solid #16213e;
-  border-radius: 4px;
-  background: #16213e;
+  border: 1px solid #146462;
+  border-radius: 5px;
+  background: #146462;
   color: #ffffff;
   font-size: 0.9rem;
   font-weight: 600;
@@ -76,7 +100,8 @@
 }
 
 .paper-button:hover {
-  background: #243b64;
+  border-color: #0f5250;
+  background: #0f5250;
 }
 
 .paper-button-secondary {
@@ -100,15 +125,15 @@
   outline-offset: 3px;
 }
 
-.subject-papers h2 {
-  margin-bottom: 0.75rem;
+.subject-papers h3 {
+  margin-bottom: 0.65rem;
 }
 
 .pyq-table-wrapper {
   width: 100%;
   overflow-x: auto;
   border: 1px solid #d9dee8;
-  border-radius: 6px;
+  border-radius: 5px;
 }
 
 .pyq-table {
@@ -119,10 +144,11 @@
 }
 
 .pyq-table caption {
-  padding: 0.85rem 1rem;
-  background: #16213e;
-  color: #ffffff;
-  font-weight: 600;
+  padding: 0.7rem 0.9rem;
+  background: #f5f7f8;
+  color: #5c6470;
+  font-size: 0.85rem;
+  font-weight: 500;
   text-align: left;
 }
 
@@ -135,8 +161,8 @@
 }
 
 .pyq-table thead th {
-  background: #243b64;
-  color: #ffffff;
+  background: #eaf1f1;
+  color: #16213e;
   font-size: 0.9rem;
   font-weight: 600;
 }
@@ -151,7 +177,7 @@
 }
 
 .pyq-table tbody tr:hover {
-  background: #e7efff;
+  background: #f0f7f6;
 }
 
 .pyq-table tbody tr:last-child th,
@@ -161,29 +187,102 @@
 
 @media (max-width: 700px) {
   .pyq-heading h1 {
-    font-size: 1.9rem;
+    font-size: 1.75rem;
   }
 
   .combined-paper {
     align-items: flex-start;
     flex-direction: column;
   }
+
+  .paper-actions {
+    width: 100%;
+  }
 }
 
 @media (max-width: 480px) {
   .pyq-heading h1 {
-    font-size: 1.65rem;
+    font-size: 1.5rem;
   }
 
   .combined-paper {
     padding: 1rem;
   }
 
-  .paper-actions {
-    width: 100%;
-  }
-
   .paper-actions .paper-button {
     flex: 1 1 100%;
   }
+}
+[hidden] {
+  display: none !important;
+}
+
+.semester-picker {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  width: 100%;
+  max-width: 1050px;
+  margin: 1.5rem auto 0;
+}
+
+.semester-picker-label {
+  color: #16213e;
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.semester-select {
+  width: 100%;
+  max-width: 320px;
+  min-height: 50px;
+  padding: 0.7rem 3rem 0.7rem 0.9rem;
+  border: 1px solid #b8c9cf;
+  border-radius: 6px;
+  appearance: none;
+  background-color: #ffffff;
+  background-image: linear-gradient(45deg, transparent 50%, #146462 50%),
+    linear-gradient(135deg, #146462 50%, transparent 50%);
+  background-position: calc(100% - 1.25rem) 1.3rem, calc(100% - 0.95rem) 1.3rem;
+  background-repeat: no-repeat;
+  background-size: 6px 6px;
+  color: #16213e;
+  font: inherit;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: border-color 150ms ease, box-shadow 150ms ease;
+}
+
+.semester-select:hover {
+  border-color: #187b79;
+}
+
+.semester-select option {
+  padding: 0.65rem;
+  background: #ffffff;
+  color: #16213e;
+}
+
+.semester-select option:checked {
+  background: #eaf5f3;
+  color: #146462;
+}
+
+.semester-select:focus-visible {
+  border-color: #187b79;
+  outline: 3px solid #facc15;
+  outline-offset: 2px;
+  box-shadow: 0 0 0 4px rgb(24 123 121 / 12%);
+}
+
+.semester-empty {
+  width: 100%;
+  max-width: 1050px;
+  margin: 1.25rem auto 0;
+  padding: 1rem 1.15rem;
+  border: 1px solid #d9e3e5;
+  border-radius: 5px;
+  background: #f5f9f8;
+  color: #5c6470;
 }

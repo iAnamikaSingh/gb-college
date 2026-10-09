@@ -1,510 +1,159 @@
 <% layout("layouts/boilerplate") %>
-<select>
-  <option>Select Semester</option>
-  <option> Semester 1</option>
-   <option> Semester 2</option>
-</select>
-<section class="pyq-page" aria-labelledby="pyq-title">
-  <header class="pyq-heading">
-    <p class="pyq-eyebrow">2025-2028</p>
-    <h1 id="pyq-title">BCA Semester 1 question papers</h1>
-    <p class="pyq-subtitle">
-      Exam papers with solutions for the 2025-2028 batch
-    </p>
-  </header>
+<%
+  /* ------------------------------------------------------------
+     ALL PDF DATA LIVES HERE. To add Semester 3, add one object.
+     ------------------------------------------------------------ */
+  const papersFor = (sem, years) =>
+    [1, 2, 3, 4, 5].map((n) => ({
+      label: `${sem}BCA ${n}`,
+      file: `${sem}BCA${n}_${years}.pdf`,
+    }));
 
-  <section class="combined-paper" aria-labelledby="combined-paper-title">
-    <div class="combined-paper-copy">
-      <h2 id="combined-paper-title">All papers in one PDF</h2>
-      <p>View or download the complete Semester 1 collection.</p>
-    </div>
-    <div class="paper-actions">
-      <a
-        class="paper-button paper-button-primary"
-        href="/pdfs/BCA_Sem1_Exam_Papers_2025-2028.pdf"
-        target="_blank"
-        rel="noopener"
-        >View combined PDF</a
-      >
-      <a
-        class="paper-button paper-button-secondary"
-        href="/pdfs/BCA_Sem1_Exam_Papers_2025-2028.pdf"
-        download="BCA_Sem1_Exam_Papers_2025-2028.pdf"
-        >Download combined PDF</a
-      >
-    </div>
-  </section>
+  const semesters = [
+    {
+      number: 1,
+      batches: [
+        {
+          years: "2025-2028",
+          combined: "BCA_Sem1_Exam_Papers_2025-2028.pdf",
+          papers: papersFor(1, "2025-2028"),
+        },
+        {
+          years: "2024-2027",
+          combined: "BCA_Sem1_Exam_Papers_2024-2027.pdf",
+          papers: papersFor(1, "2024-2027"),
+        },
+      ],
+    },
+    {
+      number: 2,
+      batches: [
+        {
+          years: "2025-2028",
+          combined: "bca-sem2-all-question-papers.pdf",
+          papers: [1, 2, 3, 4, 5].map((n) => ({
+            label: `2BCA ${n}`,
+            file: `2bca${n}-exam-paper-with-solutions.pdf`,
+          })),
+        },
+      ],
+    },
+  ];
+%>
 
-  <section class="subject-papers" aria-labelledby="subject-papers-title">
-    <h2 id="subject-papers-title">Subject-wise papers</h2>
-    <div class="pyq-table-wrapper">
-      <table class="pyq-table">
-        <caption>
-          BCA Semester 1 papers with solutions
-        </caption>
-        <thead>
-          <tr>
-            <th scope="col">No.</th>
-            <th scope="col">Paper</th>
-            <th scope="col">View</th>
-            <th scope="col">Download</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>1</td>
-            <th scope="row">2BCA 1</th>
-            <td>
-              <a
-                class="paper-button paper-button-small"
-                href="/pdfs/1BCA1_2025-2028.pdf"
-                target="_blank"
-                rel="noopener"
-                aria-label="View 1BCA 1 paper with solutions"
-                >View</a
-              >
-            </td>
-            <td>
-              <a
-                class="paper-button paper-button-small paper-button-secondary"
-                href="/pdfs/1BCA1_2025-2028.pdf"
-                download="1BCA1_2025-2028.pdf"
-                aria-label="Download 1BCA 1 paper with solutions"
-                >Download</a
-              >
-            </td>
-          </tr>
-          <tr>
-            <td>2</td>
-            <th scope="row">2BCA 2</th>
-            <td>
-              <a
-                class="paper-button paper-button-small"
-                href="/pdfs/1BCA2_2025-2028.pdf"
-                target="_blank"
-                rel="noopener"
-                aria-label="View 1BCA 2 paper with solutions"
-                >View</a
-              >
-            </td>
-            <td>
-              <a
-                class="paper-button paper-button-small paper-button-secondary"
-                href="/pdfs/1BCA2_2025-2028.pdf"
-                download="1BCA2_2025-2028.pdf"
-                aria-label="Download 1BCA 2 paper with solutions"
-                >Download</a
-              >
-            </td>
-          </tr>
-          <tr>
-            <td>3</td>
-            <th scope="row">2BCA 3</th>
-            <td>
-              <a
-                class="paper-button paper-button-small"
-                href="/pdfs/1BCA3_2025-2028.pdf"
-                target="_blank"
-                rel="noopener"
-                aria-label="View 1BCA 3 paper with solutions"
-                >View</a
-              >
-            </td>
-            <td>
-              <a
-                class="paper-button paper-button-small paper-button-secondary"
-                href="/pdfs/1BCA3_2025-2028.pdf"
-                download="1BCA3_2025-2028.pdf"
-                aria-label="Download 1BCA 3 paper with solutions"
-                >Download</a
-              >
-            </td>
-          </tr>
-          <tr>
-            <td>4</td>
-            <th scope="row">2BCA 4</th>
-            <td>
-              <a
-                class="paper-button paper-button-small"
-                href="/pdfs/1BCA4_2025-2028.pdf"
-                target="_blank"
-                rel="noopener"
-                aria-label="View 1BCA 4 paper with solutions"
-                >View</a
-              >
-            </td>
-            <td>
-              <a
-                class="paper-button paper-button-small paper-button-secondary"
-                href="/pdfs/1BCA4_2025-2028.pdf"
-                download="1BCA4_2025-2028.pdf"
-                aria-label="Download 1BCA 4 paper with solutions"
-                >Download</a
-              >
-            </td>
-          </tr>
-          <tr>
-            <td>5</td>
-            <th scope="row">1BCA 5</th>
-            <td>
-              <a
-                class="paper-button paper-button-small"
-                href="/pdfs/1BCA5_2025-2028.pdf"
-                target="_blank"
-                rel="noopener"
-                aria-label="View 1BCA 5 paper with solutions"
-                >View</a
-              >
-            </td>
-            <td>
-              <a
-                class="paper-button paper-button-small paper-button-secondary"
-                href="/pdfs/1BCA5_2025-2028.pdf"
-                download="1BCA5_2025-2028.pdf"
-                aria-label="Download 1BCA 5 paper with solutions"
-                >Download</a
-              >
-            </td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-  </section>
-</section>
+<div class="semester-picker">
+  <label for="semester-select" class="semester-picker-label">Choose your semester</label>
+  <select id="semester-select" class="semester-select">
+    <option value="">Select Semester</option>
+    <% semesters.forEach((s) => { %>
+      <option value="<%= s.number %>" <%= s.number === 1 ? "selected" : "" %>>Semester <%= s.number %></option>
+    <% }) %>
+  </select>
+</div>
 
+<p id="semester-empty" class="semester-empty">
+  Select a semester above to see its question papers and solutions.
+</p>
 
-<section class="pyq-page" aria-labelledby="pyq-title">
-  <header class="pyq-heading">
-    <p class="pyq-eyebrow">2024-2028</p>
-    <h1 id="pyq-title">BCA Semester 1 question papers</h1>
-    <p class="pyq-subtitle">
-      Exam papers with solutions for the 2024-2028 batch
-    </p>
-  </header>
+<% semesters.forEach((s) => { %>
+  <div class="semester-block" data-semester="<%= s.number %>" hidden>
+    <section class="pyq-page" aria-labelledby="s<%= s.number %>-title">
+      <header class="pyq-heading">
+        <p class="pyq-eyebrow">Previous year question papers</p>
+        <h1 id="s<%= s.number %>-title">BCA Semester <%= s.number %> question papers</h1>
+        <p class="pyq-subtitle">Question papers and solutions, organized by academic batch.</p>
+      </header>
 
-  <section class="combined-paper" aria-labelledby="combined-paper-title">
-    <div class="combined-paper-copy">
-      <h2 id="combined-paper-title">All papers in one PDF</h2>
-      <p>View or download the complete Semester 1 collection.</p>
-    </div>
-    <div class="paper-actions">
-      <a
-        class="paper-button paper-button-primary"
-        href="/pdfs/BCA_Sem1_Exam_Papers_2024-2027.pdf"
-        target="_blank"
-        rel="noopener"
-        >View combined PDF</a
-      >
-      <a
-        class="paper-button paper-button-secondary"
-        href="/pdfs/BCA_Sem1_Exam_Papers_2024-2027.pdf"
-        download="BCA_Sem1_Exam_Papers_2024-2027.pdf"
-        >Download combined PDF</a
-      >
-    </div>
-  </section>
+    <% s.batches.forEach((b, bi) => { %>
+      <% const id = `s${s.number}-b${bi}`; %>
+      <section class="pyq-batch" aria-labelledby="<%= id %>-title">
+        <header class="pyq-batch-heading">
+          <h2 id="<%= id %>-title"><%= b.years %></h2>
+        </header>
 
-  <section class="subject-papers" aria-labelledby="subject-papers-title">
-    <h2 id="subject-papers-title">Subject-wise papers</h2>
-    <div class="pyq-table-wrapper">
-      <table class="pyq-table">
-        <caption>
-          BCA Semester 1 papers with solutions
-        </caption>
-        <thead>
-          <tr>
-            <th scope="col">No.</th>
-            <th scope="col">Paper</th>
-            <th scope="col">View</th>
-            <th scope="col">Download</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>1</td>
-            <th scope="row">2BCA 1</th>
-            <td>
-              <a
-                class="paper-button paper-button-small"
-                href="/pdfs/1BCA1_2024-2027.pdf"
-                target="_blank"
-                rel="noopener"
-                aria-label="View 1BCA 1 paper with solutions"
-                >View</a
-              >
-            </td>
-            <td>
-              <a
-                class="paper-button paper-button-small paper-button-secondary"
-                href="/pdfs/1BCA1_2024-2027.pdf"
-                download="1BCA1_2024-2027.pdf"
-                aria-label="Download 1BCA 1 paper with solutions"
-                >Download</a
-              >
-            </td>
-          </tr>
-          <tr>
-            <td>2</td>
-            <th scope="row">2BCA 2</th>
-            <td>
-              <a
-                class="paper-button paper-button-small"
-                href="/pdfs/1BCA2_2024-2027.pdf"
-                target="_blank"
-                rel="noopener"
-                aria-label="View 1BCA 2 paper with solutions"
-                >View</a
-              >
-            </td>
-            <td>
-              <a
-                class="paper-button paper-button-small paper-button-secondary"
-                href="/pdfs/1BCA2_2024-2027.pdf"
-                download="1BCA2_2024-2027.pdf"
-                aria-label="Download 1BCA 2 paper with solutions"
-                >Download</a
-              >
-            </td>
-          </tr>
-          <tr>
-            <td>3</td>
-            <th scope="row">2BCA 3</th>
-            <td>
-              <a
-                class="paper-button paper-button-small"
-                href="/pdfs/1BCA3_2024-2027.pdf"
-                target="_blank"
-                rel="noopener"
-                aria-label="View 1BCA 3 paper with solutions"
-                >View</a
-              >
-            </td>
-            <td>
-              <a
-                class="paper-button paper-button-small paper-button-secondary"
-                href="/pdfs/1BCA3_2024-2027.pdf"
-                download="1BCA3_2024-2027.pdf"
-                aria-label="Download 1BCA 3 paper with solutions"
-                >Download</a
-              >
-            </td>
-          </tr>
-          <tr>
-            <td>4</td>
-            <th scope="row">2BCA 4</th>
-            <td>
-              <a
-                class="paper-button paper-button-small"
-                href="/pdfs/1BCA4_2024-2027.pdf"
-                target="_blank"
-                rel="noopener"
-                aria-label="View 1BCA 4 paper with solutions"
-                >View</a
-              >
-            </td>
-            <td>
-              <a
-                class="paper-button paper-button-small paper-button-secondary"
-                href="/pdfs/1BCA4_2024-2027.pdf"
-                download="1BCA4_2024-2027.pdf"
-                aria-label="Download 1BCA 4 paper with solutions"
-                >Download</a
-              >
-            </td>
-          </tr>
-          <tr>
-            <td>5</td>
-            <th scope="row">1BCA 5</th>
-            <td>
-              <a
-                class="paper-button paper-button-small"
-                href="/pdfs/1BCA5_2024-2027.pdf"
-                target="_blank"
-                rel="noopener"
-                aria-label="View 1BCA 5 paper with solutions"
-                >View</a
-              >
-            </td>
-            <td>
-              <a
-                class="paper-button paper-button-small paper-button-secondary"
-                href="/pdfs/1BCA5_2024-2027.pdf"
-                download="1BCA5_2024-2027.pdf"
-                aria-label="Download 1BCA 5 paper with solutions"
-                >Download</a
-              >
-            </td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-  </section>
-</section>
+        <section class="combined-paper" aria-labelledby="<%= id %>-combined-title">
+          <div class="combined-paper-copy">
+            <h3 id="<%= id %>-combined-title">Complete paper collection</h3>
+            <p>View or download the complete Semester <%= s.number %> collection.</p>
+          </div>
+          <div class="paper-actions">
+            <a class="paper-button paper-button-primary"
+               href="/pdfs/<%= b.combined %>" target="_blank" rel="noopener">View combined PDF</a>
+            <a class="paper-button paper-button-secondary"
+               href="/pdfs/<%= b.combined %>" download="<%= b.combined %>">Download combined PDF</a>
+          </div>
+        </section>
 
-<section class="pyq-page" aria-labelledby="pyq-title">
-  <header class="pyq-heading">
-    <p class="pyq-eyebrow">2025-2028</p>
-    <h1 id="pyq-title">BCA Semester 2 question papers</h1>
-    <p class="pyq-subtitle">
-      Exam papers with solutions for the 2025-2028 batch
-    </p>
-  </header>
+        <section class="subject-papers" aria-labelledby="<%= id %>-subjects">
+          <h3 id="<%= id %>-subjects">Individual papers</h3>
+          <div class="pyq-table-wrapper">
+            <table class="pyq-table">
+              <caption>BCA Semester <%= s.number %> papers with solutions (<%= b.years %>)</caption>
+              <thead>
+                <tr>
+                  <th scope="col">No.</th>
+                  <th scope="col">Paper</th>
+                  <th scope="col">View</th>
+                  <th scope="col">Download</th>
+                </tr>
+              </thead>
+              <tbody>
+                <% b.papers.forEach((p, i) => { %>
+                  <tr>
+                    <td><%= i + 1 %></td>
+                    <th scope="row"><%= p.label %></th>
+                    <td>
+                      <a class="paper-button paper-button-small"
+                         href="/pdfs/<%= p.file %>" target="_blank" rel="noopener"
+                         aria-label="View <%= p.label %> paper with solutions">View</a>
+                    </td>
+                    <td>
+                      <a class="paper-button paper-button-small paper-button-secondary"
+                         href="/pdfs/<%= p.file %>" download="<%= p.file %>"
+                         aria-label="Download <%= p.label %> paper with solutions">Download</a>
+                    </td>
+                  </tr>
+                <% }) %>
+              </tbody>
+            </table>
+          </div>
+        </section>
+      </section>
+    <% }) %>
+    </section>
+  </div>
+<% }) %>
 
-  <section class="combined-paper" aria-labelledby="combined-paper-title">
-    <div class="combined-paper-copy">
-      <h2 id="combined-paper-title">All papers in one PDF</h2>
-      <p>View or download the complete Semester 2 collection.</p>
-    </div>
-    <div class="paper-actions">
-      <a
-        class="paper-button paper-button-primary"
-        href="/pdfs/bca-sem2-all-question-papers.pdf"
-        target="_blank"
-        rel="noopener"
-        >View combined PDF</a
-      >
-      <a
-        class="paper-button paper-button-secondary"
-        href="/pdfs/bca-sem2-all-question-papers.pdf"
-        download="bca-sem2-all-question-papers.pdf"
-        >Download combined PDF</a
-      >
-    </div>
-  </section>
+<script>
+  (function () {
+    var select = document.getElementById("semester-select");
+    var blocks = document.querySelectorAll(".semester-block");
+    var empty = document.getElementById("semester-empty");
 
-  <section class="subject-papers" aria-labelledby="subject-papers-title">
-    <h2 id="subject-papers-title">Subject-wise papers</h2>
-    <div class="pyq-table-wrapper">
-      <table class="pyq-table">
-        <caption>
-          BCA Semester 2 papers with solutions
-        </caption>
-        <thead>
-          <tr>
-            <th scope="col">No.</th>
-            <th scope="col">Paper</th>
-            <th scope="col">View</th>
-            <th scope="col">Download</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>1</td>
-            <th scope="row">2BCA 1</th>
-            <td>
-              <a
-                class="paper-button paper-button-small"
-                href="/pdfs/2bca1-exam-paper-with-solutions.pdf"
-                target="_blank"
-                rel="noopener"
-                aria-label="View 2BCA 1 paper with solutions"
-                >View</a
-              >
-            </td>
-            <td>
-              <a
-                class="paper-button paper-button-small paper-button-secondary"
-                href="/pdfs/2bca1-exam-paper-with-solutions.pdf"
-                download="2bca1-exam-paper-with-solutions.pdf"
-                aria-label="Download 2BCA 1 paper with solutions"
-                >Download</a
-              >
-            </td>
-          </tr>
-          <tr>
-            <td>2</td>
-            <th scope="row">2BCA 2</th>
-            <td>
-              <a
-                class="paper-button paper-button-small"
-                href="/pdfs/2bca2-exam-paper-with-solutions.pdf"
-                target="_blank"
-                rel="noopener"
-                aria-label="View 2BCA 2 paper with solutions"
-                >View</a
-              >
-            </td>
-            <td>
-              <a
-                class="paper-button paper-button-small paper-button-secondary"
-                href="/pdfs/2bca2-exam-paper-with-solutions.pdf"
-                download="2bca2-exam-paper-with-solutions.pdf"
-                aria-label="Download 2BCA 2 paper with solutions"
-                >Download</a
-              >
-            </td>
-          </tr>
-          <tr>
-            <td>3</td>
-            <th scope="row">2BCA 3</th>
-            <td>
-              <a
-                class="paper-button paper-button-small"
-                href="/pdfs/2bca3-exam-paper-with-solutions.pdf"
-                target="_blank"
-                rel="noopener"
-                aria-label="View 2BCA 3 paper with solutions"
-                >View</a
-              >
-            </td>
-            <td>
-              <a
-                class="paper-button paper-button-small paper-button-secondary"
-                href="/pdfs/2bca3-exam-paper-with-solutions.pdf"
-                download="2bca3-exam-paper-with-solutions.pdf"
-                aria-label="Download 2BCA 3 paper with solutions"
-                >Download</a
-              >
-            </td>
-          </tr>
-          <tr>
-            <td>4</td>
-            <th scope="row">2BCA 4</th>
-            <td>
-              <a
-                class="paper-button paper-button-small"
-                href="/pdfs/2bca4-exam-paper-with-solutions.pdf"
-                target="_blank"
-                rel="noopener"
-                aria-label="View 2BCA 4 paper with solutions"
-                >View</a
-              >
-            </td>
-            <td>
-              <a
-                class="paper-button paper-button-small paper-button-secondary"
-                href="/pdfs/2bca4-exam-paper-with-solutions.pdf"
-                download="2bca4-exam-paper-with-solutions.pdf"
-                aria-label="Download 2BCA 4 paper with solutions"
-                >Download</a
-              >
-            </td>
-          </tr>
-          <tr>
-            <td>5</td>
-            <th scope="row">2BCA 5</th>
-            <td>
-              <a
-                class="paper-button paper-button-small"
-                href="/pdfs/2bca5-exam-paper-with-solutions.pdf"
-                target="_blank"
-                rel="noopener"
-                aria-label="View 2BCA 5 paper with solutions"
-                >View</a
-              >
-            </td>
-            <td>
-              <a
-                class="paper-button paper-button-small paper-button-secondary"
-                href="/pdfs/2bca5-exam-paper-with-solutions.pdf"
-                download="2bca5-exam-paper-with-solutions.pdf"
-                aria-label="Download 2BCA 5 paper with solutions"
-                >Download</a
-              >
-            </td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-  </section>
-</section>
+    function show(sem) {
+      blocks.forEach(function (b) {
+        b.hidden = b.dataset.semester !== sem;
+      });
+      empty.hidden = sem !== "";
+    }
+
+    select.addEventListener("change", function () {
+      var sem = select.value;
+      show(sem);
+      var url = new URL(window.location);
+      if (sem) url.searchParams.set("sem", sem);
+      else url.searchParams.delete("sem");
+      history.replaceState(null, "", url);
+    });
+
+    // Restore from ?sem=2 so the link is shareable / survives refresh
+    var initial = new URLSearchParams(window.location.search).get("sem") || "1";
+    if (initial && select.querySelector('option[value="' + initial + '"]')) {
+      select.value = initial;
+    } else {
+      initial = "1";
+      select.value = initial;
+    }
+    show(initial);
+  })();
+</script>
