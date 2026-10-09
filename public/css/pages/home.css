@@ -81,6 +81,98 @@ button{
   outline: 2px solid currentColor;
   outline-offset: 3px;
 }
+
+.home-faq {
+  width: min(100%, 900px);
+  align-self: center;
+  margin: 1.5rem 0 2rem;
+}
+
+.home-faq-heading {
+  margin-bottom: 1.25rem;
+}
+
+.home-faq-eyebrow {
+  margin-bottom: 0.35rem;
+  color: #187b79;
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.home-faq-heading h2 {
+  margin-bottom: 0.4rem;
+  color: #16213e;
+  font-size: 1.6rem;
+  line-height: 1.25;
+}
+
+.home-faq-heading > p:last-child {
+  color: #5c6470;
+  line-height: 1.6;
+}
+
+.home-faq-list {
+  border-top: 1px solid #d9dee8;
+}
+
+.home-faq-item {
+  border-bottom: 1px solid #d9dee8;
+}
+
+.home-faq-item summary {
+  display: flex;
+  min-height: 3.5rem;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.9rem 0.25rem;
+  color: #16213e;
+  font-weight: 600;
+  line-height: 1.45;
+  cursor: pointer;
+  list-style: none;
+}
+
+.home-faq-item summary::-webkit-details-marker {
+  display: none;
+}
+
+.home-faq-item summary::after {
+  flex: 0 0 auto;
+  color: #187b79;
+  content: "+";
+  font-size: 1.35rem;
+  font-weight: 400;
+}
+
+.home-faq-item[open] summary::after {
+  content: "-";
+}
+
+.home-faq-item summary:focus-visible {
+  border-radius: 3px;
+  outline: 3px solid #facc15;
+  outline-offset: 2px;
+}
+
+.home-faq-item > p {
+  max-width: 72ch;
+  padding: 0 2rem 1rem 0.25rem;
+  color: #5c6470;
+  line-height: 1.65;
+}
+
+.home-faq-item a {
+  color: #146462;
+  font-weight: 600;
+  text-underline-offset: 3px;
+}
+
+.home-faq-item a:hover {
+  color: #0f5250;
+}
+
 @media(max-width:800px){
   h1{
     font-size: larger;

@@ -15,7 +15,7 @@
     AICTE.
   </p>
 
-  <section class="recognition-section">
+  <section class="recognition-section" id="recognition-section">
     <div class="section-heading">
       <h2>Recognition & Approvals</h2>
       <p>
@@ -58,7 +58,7 @@
       </a>
     </div>
   </section>
-  <div class="map-embed">
+  <div class="map-embed" id="college-map">
     <iframe
       src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3607.1053406710366!2d83.6585722743806!3d25.3006646275039!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x398de374c0000001%3A0xf4efeeaf7bf7a027!2sGram%20Bharti%20College%20Ramgarh!5e0!3m2!1sen!2sin!4v1790609381525!5m2!1sen!2sin"
       title="Map showing Gram Bharti College"
@@ -69,5 +69,48 @@
   </div>
   <button id="locate-btn" type="button">Find distance to college</button>
   <p id="distance-result"></p>
+
+  <section class="home-faq" aria-labelledby="home-faq-title">
+    <div class="home-faq-heading">
+      <p class="home-faq-eyebrow">Student information</p>
+      <h2 id="home-faq-title">Frequently asked questions</h2>
+      <p>Quick answers about Gram Bharti College and its programmes.</p>
+    </div>
+
+    <div class="home-faq-list">
+      <details class="home-faq-item">
+        <summary>Where is Gram Bharti College located?</summary>
+        <p>
+          The college is in Ramgarh, Kaimur, Bihar, 821110.
+          <a href="#college-map">View the college map</a> for directions.
+        </p>
+      </details>
+
+      <details class="home-faq-item">
+        <summary>Which undergraduate programmes does the college offer?</summary>
+        <p>
+          The college offers four-year B.A., B.Sc. and B.Com. programmes, along
+          with three-year BCA and BBA programmes.
+        </p>
+      </details>
+
+      <details class="home-faq-item">
+        <summary>Which university is the college affiliated with?</summary>
+        <p>
+          Gram Bharti College is a constituent college of Veer Kunwar Singh
+          University. You can <a href="#recognition-section">view the recognition and approval links</a>
+          on this page.
+        </p>
+      </details>
+
+      <details class="home-faq-item">
+        <summary>Where can I find BCA question papers?</summary>
+        <p>
+          Visit the <a href="/pyq/bca">BCA question papers page</a> to view or
+          download the available papers and solutions by semester and batch.
+        </p>
+      </details>
+    </div>
+  </section>
 </div>
 <script src="/js/location.js"></script>
