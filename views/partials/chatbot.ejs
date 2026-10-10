@@ -1,0 +1,103 @@
+<div class="site-chatbot">
+  <section
+    class="site-chat-panel"
+    id="site-chat-panel"
+    aria-labelledby="site-chat-title"
+    hidden
+  >
+    <header class="site-chat-header">
+      <div class="site-chat-mark">
+        <img src="/images/botPhoto.png" alt="" class="botPhoto" />
+      </div>
+      <div class="site-chat-heading">
+        <h2 id="site-chat-title">Nik <span class="site-chat-buddy-tag">Your college buddy</span></h2>
+        <p><span class="site-chat-online-dot" aria-hidden="true"></span>Online</p>
+      </div>
+      <button
+        class="site-chat-header-action site-chat-voice-output"
+        id="site-chat-voice-output"
+        type="button"
+        aria-label="Enable spoken replies"
+        aria-pressed="false"
+        title="Enable spoken replies"
+      >
+        <i class="fa-solid fa-volume-xmark" aria-hidden="true"></i>
+      </button>
+      <button
+        class="site-chat-header-action site-chat-sound-toggle"
+        id="site-chat-sound-toggle"
+        type="button"
+        aria-label="Mute chat sounds"
+        aria-pressed="true"
+        title="Mute chat sounds"
+      >
+        <i class="fa-solid fa-bell" aria-hidden="true"></i>
+      </button>
+      <button
+        class="site-chat-close"
+        id="site-chat-close"
+        type="button"
+        aria-label="Close chat"
+        title="Close chat"
+      >
+        <i class="fa-solid fa-xmark" aria-hidden="true"></i>
+      </button>
+    </header>
+
+    <div class="site-chat-messages" id="site-chat-messages" role="log" aria-live="polite" aria-relevant="additions">
+      <div class="site-chat-message site-chat-message-assistant">
+        <div class="site-chat-message-meta">
+          <img class="site-chat-avatar" src="/images/botPhoto.png" alt="Nik" />
+          <span class="site-chat-sender">Nik</span>
+        </div>
+        <p>Hey! 👋 I'm Nik, your college buddy. Need help with courses, seats, BCA papers, directions, or college recognition? Just ask!</p>
+      </div>
+      <div class="site-chat-suggestions" id="site-chat-suggestions" aria-label="Suggested questions">
+        <button type="button" data-question="Which programmes are offered?">🎓 Programmes</button>
+        <button type="button" data-question="How many seats are available?">🪑 Seat availability</button>
+        <button type="button" data-question="Where are the BCA question papers?">📚 BCA papers</button>
+      </div>
+    </div>
+
+    <form class="site-chat-form" id="site-chat-form">
+      <label class="site-chat-sr-only" for="site-chat-input">Ask Nik a question</label>
+      <input
+        id="site-chat-input"
+        name="question"
+        type="text"
+        maxlength="500"
+        autocomplete="off"
+        placeholder="Ask your college buddy..."
+        required
+      />
+      <button
+        class="site-chat-mic"
+        id="site-chat-mic"
+        type="button"
+        aria-label="Start voice input"
+        title="Start voice input"
+      >
+        <i class="fa-solid fa-microphone" aria-hidden="true"></i>
+      </button>
+      <button type="submit" aria-label="Send message" title="Send message">
+        <i class="fa-solid fa-arrow-up" aria-hidden="true"></i>
+      </button>
+    </form>
+    <p class="site-chat-voice-status" id="site-chat-voice-status" role="status" aria-live="polite" hidden></p>
+    <p class="site-chat-note">Voice input uses your browser's speech service. For official updates, check the college website.</p>
+  </section>
+
+  <button
+    class="site-chat-toggle"
+    id="site-chat-toggle"
+    type="button"
+    aria-label="Open chat with Nik"
+    aria-expanded="false"
+    aria-controls="site-chat-panel"
+    title="Chat with Nik"
+  >
+    <img src="/images/botPhoto.png" alt="Nik" class="botPhoto" />
+    <span class="site-chat-toggle-ping" aria-hidden="true"></span>
+  </button>
+  <p class="site-chat-greeting" aria-hidden="true">Hey! Need help? I'm Nik 👋</p>
+</div>
