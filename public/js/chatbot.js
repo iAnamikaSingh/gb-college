@@ -1,6 +1,7 @@
 (function () {
   const panel = document.getElementById("site-chat-panel");
   const toggle = document.getElementById("site-chat-toggle");
+  const chatbot = document.querySelector(".site-chatbot");
   const close = document.getElementById("site-chat-close");
   const form = document.getElementById("site-chat-form");
   const input = document.getElementById("site-chat-input");
@@ -14,6 +15,8 @@
   let isListening = false;
   let voiceOutputEnabled = false;
   let soundEnabled = true;
+  let chatbotOffsetX = 0;
+  let chatbotOffsetY = 0;
   let audioContext = null;
   let cachedVoices = [];
   const conversationKey = "gbc-chat-history";
@@ -167,6 +170,15 @@
     panel.hidden = !isOpen;
     toggle.setAttribute("aria-expanded", String(isOpen));
     toggle.classList.toggle("is-chat-open", isOpen);
+    if (isOpen && chatbot) {
+      const bounds = chatbot.getBoundingClientRect();
+      const left = Math.max(0, Math.min(window.innerWidth - bounds.width, bounds.left));
+      const top = Math.max(0, Math.min(window.innerHeight - bounds.height, bounds.top));
+      chatbotOffsetX += left - bounds.left;
+      chatbotOffsetY += top - bounds.top;
+      chatbot.style.setProperty("--chatbot-offset-x", chatbotOffsetX + "px");
+      chatbot.style.setProperty("--chatbot-offset-y", chatbotOffsetY + "px");
+    }
     if (isOpen) {
       input.focus();
     } else {
@@ -447,7 +459,17 @@
       };
     }
 
-    if (/admission|apply|application|fee|fees|scholarship|eligib/.test(text)) {
+    if (/fee|fees|cost|tuition/.test(text)) {
+      return {
+        text: "Approximate BCA 2025–2028 fees shared: Semester 1 ₹10,100; Semester 2 ₹10,700; Semester 3 ₹14,700; Semesters 4–6 about ₹11,000–₹15,000 each. That gives an estimated semester-fee total of ₹68,500–₹80,500. The exam fee is ₹1,000 per semester, or ₹6,000 total if unchanged, giving ₹74,500–₹86,500 including exams. These are not official figures; the suggested ₹80,000–₹90,000 total does not match the itemized range. Please confirm exact fees with the BCA HOD.",
+        links: [
+          { label: "View BCA fee estimate ↗", href: "/bca#fees" },
+          { label: "Official college website ↗", href: "https://gbcramgarh.in/", external: true },
+        ],
+      };
+    }
+
+    if (/admission|apply|application|scholarship|eligib/.test(text)) {
       return {
         text: "I couldn't verify the latest admission, fee, eligibility, or scholarship details here. Best to check with the college directly.",
         links: [{
@@ -477,7 +499,7 @@
     }
 
     return {
-      text: "Hmm, I don't know. I can help with programmes, seat counts, BCA papers, directions, and recognition.",
+      text: "Hmm, I don't know what you asked. But I can help with programmes, seat counts, BCA papers, directions, and recognition.",
       links: [
         { label: "Programmes", href: "/programs" },
         { label: "Seat matrix", href: "/seat-matrix" },
@@ -522,7 +544,63 @@
     voiceStatus.hidden = !text;
   }
 
+  let dragState = null;
+  let suppressToggleClick = false;
+
+  toggle.addEventListener("pointerdown", function (event) {
+    if (!chatbot || !panel.hidden || !event.isPrimary || event.button !== 0) return;
+
+    const bounds = chatbot.getBoundingClientRect();
+    dragState = {
+      pointerId: event.pointerId,
+      startX: event.clientX,
+      startY: event.clientY,
+      left: bounds.left,
+      top: bounds.top,
+      offsetX: chatbotOffsetX,
+      offsetY: chatbotOffsetY,
+      moved: false,
+    };
+    event.preventDefault();
+    toggle.setPointerCapture(event.pointerId);
+  });
+
+  toggle.addEventListener("pointermove", function (event) {
+    if (!dragState || event.pointerId !== dragState.pointerId) return;
+
+    const deltaX = event.clientX - dragState.startX;
+    const deltaY = event.clientY - dragState.startY;
+    if (!dragState.moved && Math.hypot(deltaX, deltaY) < 5) return;
+
+    dragState.moved = true;
+    chatbot.classList.add("is-dragging");
+    const left = Math.max(0, Math.min(window.innerWidth - chatbot.offsetWidth, dragState.left + deltaX));
+    const top = Math.max(0, Math.min(window.innerHeight - chatbot.offsetHeight, dragState.top + deltaY));
+    chatbotOffsetX = dragState.offsetX + left - dragState.left;
+    chatbotOffsetY = dragState.offsetY + top - dragState.top;
+    chatbot.style.setProperty("--chatbot-offset-x", chatbotOffsetX + "px");
+    chatbot.style.setProperty("--chatbot-offset-y", chatbotOffsetY + "px");
+    event.preventDefault();
+  });
+
+  function endDrag(event) {
+    if (!dragState || event.pointerId !== dragState.pointerId) return;
+
+    if (dragState.moved) {
+      suppressToggleClick = true;
+      chatbot.classList.remove("is-dragging");
+      window.setTimeout(function () {
+        suppressToggleClick = false;
+      }, 0);
+    }
+    dragState = null;
+  }
+
+  toggle.addEventListener("pointerup", endDrag);
+  toggle.addEventListener("pointercancel", endDrag);
+
   toggle.addEventListener("click", function () {
+    if (suppressToggleClick) return;
     setOpen(panel.hidden);
   });
 

@@ -1,0 +1,196 @@
+.bca-resources {
+  width: 100%;
+  max-width: 1000px;
+  margin: 1.5rem auto 3rem;
+  color: #26374b;
+}
+
+.bca-resources-header {
+  padding-bottom: 1.25rem;
+  border-bottom: 1px solid #dce5e7;
+}
+
+.bca-resources-eyebrow {
+  margin-bottom: 0.35rem;
+  color: #176b66;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.bca-resources-header h1 {
+  color: #17243b;
+  font-size: 2rem;
+  line-height: 1.2;
+}
+
+.bca-resources-header > p:last-child {
+  max-width: 650px;
+  margin-top: 0.55rem;
+  color: #626e78;
+  line-height: 1.6;
+}
+
+.bca-resource-jump {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.55rem;
+  padding: 1rem 0;
+  border-bottom: 1px solid #dce5e7;
+}
+
+.bca-resource-jump a {
+  display: inline-flex;
+  min-height: 40px;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 0.75rem;
+  border: 1px solid #d5e3e1;
+  border-radius: 6px;
+  background: #fff;
+  color: #225752;
+  font-size: 0.83rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: border-color 160ms ease, background-color 160ms ease, transform 160ms ease;
+}
+
+.bca-resource-jump a:hover,
+.bca-resource-jump a:focus-visible {
+  transform: translateY(-1px);
+  border-color: #8dbbb2;
+  background: #eff8f5;
+}
+
+.bca-resource-jump a i {
+  color: #176b66;
+}
+
+.bca-resource-sections {
+  display: grid;
+}
+
+.bca-resource-section {
+  display: grid;
+  grid-template-columns: 42px minmax(0, 1fr);
+  gap: 1rem;
+  padding: 1.25rem 0;
+  border-bottom: 1px solid #e3e9eb;
+  scroll-margin-top: 100px;
+}
+
+.bca-resource-icon {
+  display: grid;
+  width: 40px;
+  height: 40px;
+  place-items: center;
+  border-radius: 8px;
+  background: #eaf5f2;
+  color: #176b66;
+}
+
+.bca-resource-section h2 {
+  margin: 0 0 0.35rem;
+  color: #17243b;
+  font-size: 1.05rem;
+}
+
+.bca-resource-section p {
+  max-width: 720px;
+  margin: 0;
+  color: #626e78;
+  font-size: 0.9rem;
+  line-height: 1.6;
+}
+
+.bca-resource-section .bca-fee-disclaimer {
+  margin-bottom: 0.8rem;
+}
+
+.bca-fee-breakdown {
+  display: grid;
+  max-width: 640px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.55rem 1.5rem;
+  margin: 0 0 0.8rem;
+}
+
+.bca-fee-breakdown div {
+  display: flex;
+  justify-content: space-between;
+  gap: 0.75rem;
+  padding: 0.55rem 0;
+  border-bottom: 1px solid #e3e9eb;
+  font-size: 0.84rem;
+}
+
+.bca-fee-breakdown dt {
+  color: #626e78;
+}
+
+.bca-fee-breakdown dd {
+  color: #26374b;
+  font-weight: 650;
+  text-align: right;
+}
+
+.bca-resource-section .bca-fee-total,
+.bca-resource-section .bca-fee-caution {
+  margin-top: 0.6rem;
+}
+
+.bca-resource-section .bca-fee-caution {
+  color: #76541e;
+}
+
+.bca-resource-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  margin-top: 0.65rem;
+  color: #146462;
+  font-size: 0.84rem;
+  font-weight: 650;
+  text-decoration: none;
+}
+
+.bca-resource-link:hover,
+.bca-resource-link:focus-visible {
+  color: #0f5250;
+  text-decoration: underline;
+}
+
+.bca-resource-link:focus-visible,
+.bca-resource-jump a:focus-visible {
+  outline: 3px solid #facc15;
+  outline-offset: 3px;
+}
+
+@media (max-width: 600px) {
+  .bca-resources-header h1 {
+    font-size: 1.65rem;
+  }
+
+  .bca-resource-section {
+    grid-template-columns: 34px minmax(0, 1fr);
+    gap: 0.75rem;
+    padding: 1rem 0;
+  }
+
+  .bca-resource-icon {
+    width: 34px;
+    height: 34px;
+    font-size: 0.85rem;
+  }
+
+  .bca-fee-breakdown {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .bca-resource-jump a {
+    transition: none;
+  }
+}

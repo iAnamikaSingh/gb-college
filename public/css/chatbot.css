@@ -11,6 +11,7 @@
   bottom: 1.25rem;
   z-index: 1200;
   width: min(390px, calc(100vw - 2.5rem));
+  transform: translate3d(var(--chatbot-offset-x, 0px), var(--chatbot-offset-y, 0px), 0);
   font-family: "Poppins", sans-serif;
 }
 
@@ -47,6 +48,15 @@
   transition: box-shadow 180ms ease, transform 180ms ease;
   isolation: isolate;
   animation: chatToggleNudge 700ms ease-in-out 800ms 2;
+  cursor: grab;
+  touch-action: none;
+}
+
+.site-chatbot.is-dragging .site-chat-toggle {
+  cursor: grabbing;
+  transform: none;
+  transition: none;
+  user-select: none;
 }
 
 .site-chat-toggle::after {
@@ -81,6 +91,9 @@
   height: 100%;
   border-radius: 50%;
   object-fit: cover;
+  pointer-events: none;
+  user-select: none;
+  -webkit-user-drag: none;
 }
 
 .site-chat-toggle-ping {
@@ -118,7 +131,7 @@
   display: flex;
   width: 100%;
   height: min(600px, calc(100dvh - 7rem));
-  min-height: 360px;
+  min-height: min(360px, calc(100dvh - 7rem));
   flex-direction: column;
   overflow: hidden;
   margin-bottom: 0.9rem;
@@ -640,8 +653,8 @@
   }
 
   .site-chat-panel {
-    height: min(600px, calc(100dvh - 6rem));
-    min-height: min(340px, calc(100dvh - 6rem));
+    height: min(600px, calc(100dvh - 6.5rem));
+    min-height: min(340px, calc(100dvh - 6.5rem));
   }
 
   .site-chat-messages {
