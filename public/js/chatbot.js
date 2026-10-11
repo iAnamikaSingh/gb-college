@@ -352,7 +352,7 @@
       )
     ) {
       return {
-        text: "My college buddy Anamika built me! 😄",
+        text: "My college buddy Anamika built me! \u{1F604}",
       };
     }
 
@@ -374,7 +374,7 @@
       )
     ) {
       return {
-        text: "I'm a chatbot, not a human! I run on simple rules, so I only know what's been set up for me. 🤖",
+        text: "I'm a chatbot, not a human! I run on simple rules, so I only know what's been set up for me. \u{1F916}",
       };
     }
 
@@ -385,14 +385,14 @@
       )
     ) {
       return {
-        text: "Doing great, thanks for asking! 😄 Ready to help. What do you want to know?",
+        text: "Doing great, thanks for asking! \u{1F604} Ready to help. What do you want to know?",
       };
     }
 
     // --- Where do you live / are you from ---
     if (/where (do|are) you (live|from|stay)|your (home|house)/.test(text)) {
       return {
-        text: "I live on the college website, rent-free and with zero electricity bills. 😎",
+        text: "I live on the college website, rent-free and with zero electricity bills. \u{1F60E}",
       };
     }
 
@@ -400,10 +400,10 @@
     if (/joke|make me laugh|something funny|bore|bored/.test(text)) {
       return {
         text: pickOne([
-          "Why do programmers prefer dark mode? Because light attracts bugs! 🐛",
-          "Why did the student bring a ladder to the BCA class? To reach the higher-level language! 😄",
-          "I'd tell you a UDP joke, but you might not get it. 😅",
-          "There are 10 kinds of people: those who understand binary and those who don't. 🤓",
+          "Why do programmers prefer dark mode? Because light attracts bugs! \u{1F41B}",
+          "Why did the student bring a ladder to the BCA class? To reach the higher-level language! \u{1F604}",
+          "I'd tell you a UDP joke, but you might not get it. \u{1F605}",
+          "There are 10 kinds of people: those who understand binary and those who don't. \u{1F913}",
         ]),
       };
     }
@@ -416,8 +416,8 @@
     ) {
       return {
         text: pickOne([
-          "My relationship status: connected to Wi-Fi. That's the only commitment I can handle. 😅",
-          "Sorry, I'm already in a serious relationship with my keywords. 💔",
+          "My relationship status: connected to Wi-Fi. That's the only commitment I can handle. \u{1F605}",
+          "Sorry, I'm already in a serious relationship with my keywords. \u{1F494}",
         ]),
       };
     }
@@ -425,7 +425,7 @@
     // --- Bunking / attendance ---
     if (/bunk|attendance|skip (class|college)|proxy/.test(text)) {
       return {
-        text: "I never miss a day, but attendance rules are best checked with the college directly. And no proxy for me either! 😄",
+        text: "I never miss a day, but attendance rules are best checked with the college directly. And no proxy for me either! \u{1F604}",
         links: [
           {
             label: "Official college website ↗",
@@ -443,7 +443,7 @@
       )
     ) {
       return {
-        text: "I can't predict results, but I can tell you that solving previous papers helps a lot! 📚",
+        text: "I can't predict results, but I can tell you that solving previous papers helps a lot! \u{1F4DA}",
         links: [{ label: "Browse BCA papers ↗", href: "/pyq/bca" }],
       };
     }
@@ -470,8 +470,8 @@
     if (/\b(thanks|thank you|thx|shukriya|dhanyavad|dhanyawad)\b/.test(text)) {
       return {
         text: pickOne([
-          "Anytime! 😊 Come back if you need anything else.",
-          "You're welcome! Happy to help. 🙌",
+          "Anytime! \u{1F60A} Come back if you need anything else.",
+          "You're welcome! Happy to help. \u{1F64C}",
         ]),
       };
     }
@@ -479,13 +479,13 @@
     // --- Bye ---
     if (/\b(bye|goodbye|see you|tata|alvida|good night)\b/.test(text)) {
       return {
-        text: "Bye! 👋 Take care, and come back anytime.",
+        text: "Bye! \u{1F44B} Take care, and come back anytime.",
       };
     }
 
     if (/\b(hi|hello|hey|namaste|hii|hlo)\b/.test(text)) {
       return {
-        text: "Hey! 👋 What can I help you with—courses, seats, BCA papers, directions, or recognition?",
+        text: "Hey! \u{1F44B} What can I help you with—courses, seats, BCA papers, directions, or recognition?",
       };
     }
 
@@ -618,7 +618,7 @@
 
     if (/where|location|address|direction|reach|map/.test(text)) {
       return {
-        text: "It's in Ramgarh, Kaimur, Bihar — PIN 821110. Open the college map for directions. 📍",
+        text: "It's in Ramgarh, Kaimur, Bihar — PIN 821110. Open the college map for directions. \u{1F4CD}",
         links: [{ label: "View college map ↗", href: "/#college-map" }],
       };
     }
