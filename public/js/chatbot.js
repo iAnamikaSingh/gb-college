@@ -21,7 +21,8 @@
   let cachedVoices = [];
   const conversationKey = "gbc-chat-history";
   let conversation = [];
-  const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+  const SpeechRecognition =
+    window.SpeechRecognition || window.webkitSpeechRecognition;
 
   if (!panel || !toggle || !close || !form || !input || !messages) return;
 
@@ -32,10 +33,16 @@
 
   try {
     if (isReload) window.sessionStorage.removeItem(conversationKey);
-    const savedConversation = JSON.parse(window.sessionStorage.getItem(conversationKey) || "[]");
+    const savedConversation = JSON.parse(
+      window.sessionStorage.getItem(conversationKey) || "[]",
+    );
     if (Array.isArray(savedConversation)) {
       conversation = savedConversation.filter(function (entry) {
-        return entry && (entry.role === "user" || entry.role === "assistant") && typeof entry.text === "string";
+        return (
+          entry &&
+          (entry.role === "user" || entry.role === "assistant") &&
+          typeof entry.text === "string"
+        );
       });
     }
   } catch (error) {
@@ -44,7 +51,10 @@
 
   function saveConversation() {
     try {
-      window.sessionStorage.setItem(conversationKey, JSON.stringify(conversation));
+      window.sessionStorage.setItem(
+        conversationKey,
+        JSON.stringify(conversation),
+      );
     } catch (error) {
       // Chat remains usable when browser storage is unavailable.
     }
@@ -53,12 +63,14 @@
   function playMessageSound(kind) {
     if (!soundEnabled) return;
 
-    const AudioContextConstructor = window.AudioContext || window.webkitAudioContext;
+    const AudioContextConstructor =
+      window.AudioContext || window.webkitAudioContext;
     if (!AudioContextConstructor) return;
 
     try {
       if (!audioContext) audioContext = new AudioContextConstructor();
-      if (audioContext.state === "suspended") audioContext.resume().catch(function () {});
+      if (audioContext.state === "suspended")
+        audioContext.resume().catch(function () {});
 
       const notes = kind === "sent" ? [740] : [523, 659];
       notes.forEach(function (frequency, index) {
@@ -85,8 +97,13 @@
     if (!voiceOutputButton) return;
 
     voiceOutputButton.setAttribute("aria-pressed", String(enabled));
-    voiceOutputButton.setAttribute("aria-label", enabled ? "Disable spoken replies" : "Enable spoken replies");
-    voiceOutputButton.title = enabled ? "Disable spoken replies" : "Enable spoken replies";
+    voiceOutputButton.setAttribute(
+      "aria-label",
+      enabled ? "Disable spoken replies" : "Enable spoken replies",
+    );
+    voiceOutputButton.title = enabled
+      ? "Disable spoken replies"
+      : "Enable spoken replies";
     voiceOutputButton.innerHTML = enabled
       ? '<i class="fa-solid fa-volume-high" aria-hidden="true"></i>'
       : '<i class="fa-solid fa-volume-xmark" aria-hidden="true"></i>';
@@ -95,7 +112,8 @@
   }
 
   function loadVoices() {
-    if (window.speechSynthesis) cachedVoices = window.speechSynthesis.getVoices();
+    if (window.speechSynthesis)
+      cachedVoices = window.speechSynthesis.getVoices();
   }
 
   if (window.speechSynthesis) {
@@ -105,8 +123,10 @@
   }
 
   function pickIndianMaleVoice() {
-    const maleHints = /\b(male|prabhat|ravi|rishi|hemant|madhur|kabir|arjun)\b/i;
-    const femaleHints = /\b(female|neerja|heera|veena|lekha|kalpana|swara|aditi|priya)\b/i;
+    const maleHints =
+      /\b(male|prabhat|ravi|rishi|hemant|madhur|kabir|arjun)\b/i;
+    const femaleHints =
+      /\b(female|neerja|heera|veena|lekha|kalpana|swara|aditi|priya)\b/i;
 
     let best = null;
     let bestScore = 0;
@@ -116,7 +136,8 @@
       let score = 0;
 
       if (lang === "en-in") score += 10;
-      else if (/india|indian/i.test(voice.name) && lang.startsWith("en")) score += 8;
+      else if (/india|indian/i.test(voice.name) && lang.startsWith("en"))
+        score += 8;
       else return; // skip non-Indian-English voices
 
       if (maleHints.test(voice.name)) score += 20;
@@ -142,14 +163,19 @@
   }
 
   function speakReply(text) {
-    if (!voiceOutputEnabled || !window.speechSynthesis || !window.SpeechSynthesisUtterance) return;
+    if (
+      !voiceOutputEnabled ||
+      !window.speechSynthesis ||
+      !window.SpeechSynthesisUtterance
+    )
+      return;
 
     window.speechSynthesis.cancel();
 
     const utterance = new window.SpeechSynthesisUtterance(cleanForSpeech(text));
     utterance.lang = "en-IN";
-    utterance.rate = 1.05;   // slightly brisk = upbeat
-    utterance.pitch = 1.15;  // a bit higher = youthful, cheerful
+    utterance.rate = 1.05; // slightly brisk = upbeat
+    utterance.pitch = 1.15; // a bit higher = youthful, cheerful
     utterance.volume = 1;
 
     const voice = pickIndianMaleVoice();
@@ -172,8 +198,14 @@
     toggle.classList.toggle("is-chat-open", isOpen);
     if (isOpen && chatbot) {
       const bounds = chatbot.getBoundingClientRect();
-      const left = Math.max(0, Math.min(window.innerWidth - bounds.width, bounds.left));
-      const top = Math.max(0, Math.min(window.innerHeight - bounds.height, bounds.top));
+      const left = Math.max(
+        0,
+        Math.min(window.innerWidth - bounds.width, bounds.left),
+      );
+      const top = Math.max(
+        0,
+        Math.min(window.innerHeight - bounds.height, bounds.top),
+      );
       chatbotOffsetX += left - bounds.left;
       chatbotOffsetY += top - bounds.top;
       chatbot.style.setProperty("--chatbot-offset-x", chatbotOffsetX + "px");
@@ -218,9 +250,13 @@
     message.appendChild(paragraph);
 
     const safeLinks = (links || []).filter(function (item) {
-      return item && typeof item.label === "string" && typeof item.href === "string" &&
+      return (
+        item &&
+        typeof item.label === "string" &&
+        typeof item.href === "string" &&
         ((item.href.charAt(0) === "/" && item.href.charAt(1) !== "/") ||
-          item.href.indexOf("https://gbcramgarh.in/") === 0);
+          item.href.indexOf("https://gbcramgarh.in/") === 0)
+      );
     });
 
     if (safeLinks.length) {
@@ -253,13 +289,16 @@
   function scrollToLatest() {
     messages.scrollTo({
       top: messages.scrollHeight,
-      behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth",
+      behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches
+        ? "auto"
+        : "smooth",
     });
   }
 
   function showTyping() {
     const typing = document.createElement("div");
-    typing.className = "site-chat-message site-chat-message-assistant site-chat-typing";
+    typing.className =
+      "site-chat-message site-chat-message-assistant site-chat-typing";
     typing.setAttribute("aria-label", "Nik is typing");
 
     const meta = document.createElement("div");
@@ -307,28 +346,44 @@
     const seatLinks = [{ label: "Open seat matrix ↗", href: "/seat-matrix" }];
 
     // --- Who built me / this website ---
-    if (/who\s+(built|made|created|developed|designed|coded|programmed|owns)|your\s+(creator|developer|maker|owner)|built\s+(me|this)/.test(text)) {
+    if (
+      /who\s+(built|made|created|developed|designed|coded|programmed|owns)|your\s+(creator|developer|maker|owner)|built\s+(me|this)/.test(
+        text,
+      )
+    ) {
       return {
         text: "My college buddy Anamika built me! 😄",
       };
     }
 
     // --- Who are you / name ---
-    if (/who are you|your name|what are you called|what should i call you/.test(text)) {
+    if (
+      /who are you|your name|what are you called|what should i call you/.test(
+        text,
+      )
+    ) {
       return {
         text: "I'm Nik, the college's chat buddy! Ask me about programmes, seats, BCA papers, directions, or recognition.",
       };
     }
 
     // --- Are you a human / AI / real ---
-    if (/are you (a )?(human|real|robot|bot|ai|person)|real person|talking to a (bot|human)/.test(text)) {
+    if (
+      /are you (a )?(human|real|robot|bot|ai|person)|real person|talking to a (bot|human)/.test(
+        text,
+      )
+    ) {
       return {
         text: "I'm a chatbot, not a human! I run on simple rules, so I only know what's been set up for me. 🤖",
       };
     }
 
     // --- How are you ---
-    if (/how are you|how r u|kaise ho|kya haal|how do you do|what'?s up|wassup/.test(text)) {
+    if (
+      /how are you|how r u|kaise ho|kya haal|how do you do|what'?s up|wassup/.test(
+        text,
+      )
+    ) {
       return {
         text: "Doing great, thanks for asking! 😄 Ready to help. What do you want to know?",
       };
@@ -354,7 +409,11 @@
     }
 
     // --- Love / girlfriend / boyfriend ---
-    if (/girlfriend|boyfriend|\bgf\b|\bbf\b|love me|marry me|date me|crush|single/.test(text)) {
+    if (
+      /girlfriend|boyfriend|\bgf\b|\bbf\b|love me|marry me|date me|crush|single/.test(
+        text,
+      )
+    ) {
       return {
         text: pickOne([
           "My relationship status: connected to Wi-Fi. That's the only commitment I can handle. 😅",
@@ -367,16 +426,22 @@
     if (/bunk|attendance|skip (class|college)|proxy/.test(text)) {
       return {
         text: "I never miss a day, but attendance rules are best checked with the college directly. And no proxy for me either! 😄",
-        links: [{
-          label: "Official college website ↗",
-          href: "https://gbcramgarh.in/",
-          external: true,
-        }],
+        links: [
+          {
+            label: "Official college website ↗",
+            href: "https://gbcramgarh.in/",
+            external: true,
+          },
+        ],
       };
     }
 
     // --- Exams / will I pass ---
-    if (/will i pass|going to pass|will i fail|am i going to fail|exam tips|how to (pass|score|study)/.test(text)) {
+    if (
+      /will i pass|going to pass|will i fail|am i going to fail|exam tips|how to (pass|score|study)/.test(
+        text,
+      )
+    ) {
       return {
         text: "I can't predict results, but I can tell you that solving previous papers helps a lot! 📚",
         links: [{ label: "Browse BCA papers ↗", href: "/pyq/bca" }],
@@ -384,14 +449,20 @@
     }
 
     // --- Hostel / canteen / placement / timings (not verified) ---
-    if (/hostel|canteen|mess|food|placement|job|package|timing|time table|timetable|holiday/.test(text)) {
+    if (
+      /hostel|canteen|mess|food|placement|job|package|timing|time table|timetable|holiday/.test(
+        text,
+      )
+    ) {
       return {
         text: "I don't have verified details on that yet, and I'd hate to guess. Please check with the college directly.",
-        links: [{
-          label: "Official college website ↗",
-          href: "https://gbcramgarh.in/",
-          external: true,
-        }],
+        links: [
+          {
+            label: "Official college website ↗",
+            href: "https://gbcramgarh.in/",
+            external: true,
+          },
+        ],
       };
     }
 
@@ -433,25 +504,73 @@
     if (/syllabus|curriculum/.test(text)) {
       return {
         text: "The BCA syllabus is available to view or download as a PDF.",
-        links: [{ label: "View BCA syllabus ↗", href: "/programs/bca#syllabus" }],
+        links: [
+          { label: "View BCA syllabus ↗", href: "/programs/bca#syllabus" },
+        ],
       };
     }
 
     if (/assignment|front page|cover page/.test(text)) {
       return {
         text: "The BCA resources page has a combined PDF with two assignment front pages, for use with any semester.",
-        links: [{ label: "Assignment front pages ↗", href: "/programs/bca#assignment-front-page" }],
+        links: [
+          {
+            label: "Assignment front pages ↗",
+            href: "/programs/bca#assignment-front-page",
+          },
+        ],
       };
     }
 
     if (/uniform|dress code/.test(text)) {
+      const isBCA = /\b(bca|BCA)\b/.test(text);
+      const isBBA = /\b(bba|BBA)\b/.test(text);
+      const isNoUniform = /\b(ba|bcom|b\.com|bsci|bsci|BSci|BA|BCom)\b/.test(text);
+
+      // 1. BCA: uniform exists
+      if (isBCA) {
+        return {
+          text: "The listed BCA uniform is black pants, white shirt, black shoes and white socks for boys; black salwar, white suit and black dupatta for girls. The listed boys' outfit is also an option.",
+          links: [
+            {
+              label: "View BCA uniform details ↗",
+              href: "/programs/bca#uniform",
+            },
+          ],
+        };
+      }
+
+      // 2. BBA: no data found
+      if (isBBA) {
+        return {
+          text: "I couldn't find any uniform details for BBA. The official college website is the safest place to check.",
+          links: [
+            {
+              label: "Official college website ↗",
+              href: "https://gbcramgarh.in/",
+              external: true,
+            },
+          ],
+        };
+      }
+
+      // 3. BA / BCom / BSc: no uniform
+      if (isNoUniform) {
+        return {
+          text: "There is no uniform for BA, BCom and BSc students.",
+        };
+      }
+
+      // No program mentioned
       return {
-        text: "The listed uniform is black pants, white shirt, black shoes and white socks for boys; black salwar, white suit and black dupatta for girls. The listed boys' outfit is also an option.",
-        links: [{ label: "View BCA uniform details ↗", href: "/programs/bca#uniform" }],
+        text: "Uniform details depend on the program. BCA has a listed uniform, BA, BCom and BSc have none, and I have no data for BBA. Which program are you asking about?",
       };
     }
 
-    if (/\bbca\b/.test(text) && /how many semesters|number of semesters/.test(text)) {
+    if (
+      /\bbca\b/.test(text) &&
+      /how many semesters|number of semesters/.test(text)
+    ) {
       return {
         text: "BCA is a three-year programme across six semesters. The current question-paper archive includes Semesters 1 and 2.",
         links: [{ label: "BCA resources ↗", href: "/programs/bca" }],
@@ -465,24 +584,35 @@
       };
     }
 
-    if (/question paper|previous year|\bpyq\b|exam paper|solutions?/.test(text)) {
+    if (
+      /question paper|previous year|\bpyq\b|exam paper|solutions?/.test(text)
+    ) {
       return {
         text: "BCA papers and solutions are available for Semester 1 batches 2024–2027 and 2025–2028, and Semester 2 batch 2025–2028.",
         links: [{ label: "Browse BCA papers ↗", href: "/pyq/bca" }],
       };
     }
 
-    if (/\b(bca|bba)\b/.test(text) && /paper|semester|exam|download/.test(text)) {
+    if (
+      /\b(bca|bba)\b/.test(text) &&
+      /paper|semester|exam|download/.test(text)
+    ) {
       return {
         text: "You can find BCA papers and solutions by semester and batch on this page.",
         links: [{ label: "Browse BCA papers ↗", href: "/pyq/bca" }],
       };
     }
 
-    if (/recognition|approval|ugc|aicte|affiliat|constituent|university/.test(text)) {
+    if (
+      /recognition|approval|ugc|aicte|affiliat|constituent|university/.test(
+        text,
+      )
+    ) {
       return {
         text: "The site lists Gram Bharti College as a constituent college of Veer Kunwar Singh University and provides UGC/AICTE verification links.",
-        links: [{ label: "View recognition info ↗", href: "/#recognition-section" }],
+        links: [
+          { label: "View recognition info ↗", href: "/#recognition-section" },
+        ],
       };
     }
 
@@ -498,7 +628,11 @@
         text: "For the 2025–2028 batch, estimated semester fees total ₹68,500–₹80,500. Including exams at ₹1,000 per semester, the estimate is ₹74,500–₹86,500 if that rate stays unchanged. These are not official current rates; confirm the exact fees with the BCA HOD.",
         links: [
           { label: "View BCA fee estimate ↗", href: "/programs/bca#fees" },
-          { label: "Official college website ↗", href: "https://gbcramgarh.in/", external: true },
+          {
+            label: "Official college website ↗",
+            href: "https://gbcramgarh.in/",
+            external: true,
+          },
         ],
       };
     }
@@ -506,29 +640,74 @@
     if (/admission|apply|application|scholarship|eligib/.test(text)) {
       return {
         text: "I couldn't verify the latest admission, fee, eligibility, or scholarship details here. Best to check with the college directly.",
-        links: [{
-          label: "Official college website ↗",
-          href: "https://gbcramgarh.in/",
-          external: true,
-        }],
+        links: [
+          {
+            label: "Official college website ↗",
+            href: "https://gbcramgarh.in/",
+            external: true,
+          },
+        ],
       };
     }
 
-    if (/program|course|degree|\bbca\b|\bbba\b|\bb\.?a\.?\b|\bb\.?sc\.?\b|\bb\.?com\.?\b/.test(text)) {
+    if (
+      /program|course|degree|\bbca\b|\bbba\b|\bb\.?a\.?\b|\bb\.?sc\.?\b|\bb\.?com\.?\b/.test(
+        text,
+      )
+    ) {
       return {
         text: "Here's the quick overview: B.A., B.Sc., and B.Com. are listed as four-year programmes; BCA and BBA as three-year programmes.",
-        links: [{ label: "Explore programmes ↗", href: "/programs" }, { label: "BCA resources ↗", href: "/programs/bca" }],
+        links: [
+          { label: "Explore programmes ↗", href: "/programs" },
+          { label: "BCA resources ↗", href: "/programs/bca" },
+        ],
       };
     }
 
-    if (/contact|phone|email|telephone/.test(text)) {
+    // Phone
+    if (/phone|telephone|mobile|call|contact number/.test(text)) {
       return {
-        text: "I don't have a verified phone number or email listed here. The official college website is the safest place to check.",
-        links: [{
-          label: "Official college website ↗",
-          href: "https://gbcramgarh.in/",
-          external: true,
-        }],
+        text: "I don't have a verified phone number listed here. The official college website is the safest place to check.",
+        links: [
+          {
+            label: "Official college website ↗",
+            href: "https://gbcramgarh.in/",
+            external: true,
+          },
+        ],
+      };
+    }
+
+    // Email
+    if (/email|e-mail|mail/.test(text)) {
+      return {
+        text: "You can email the college at gbcramgarh@gmail.com.",
+        links: [
+          {
+            label: "Send an email ✉",
+            href: "mailto:gbcramgarh@gmail.com",
+            external: false,
+          },
+        ],
+      };
+    }
+
+    // General "contact" with no specific type
+    if (/contact/.test(text)) {
+      return {
+        text: "You can email the college at gbcramgarh@gmail.com. I don't have a verified phone number, so please check the official website for that.",
+        links: [
+          {
+            label: "Send an email ✉",
+            href: "mailto:gbcramgarh@gmail.com",
+            external: false,
+          },
+          {
+            label: "Official college website ↗",
+            href: "https://gbcramgarh.in/",
+            external: true,
+          },
+        ],
       };
     }
 
@@ -582,7 +761,8 @@
   let suppressToggleClick = false;
 
   toggle.addEventListener("pointerdown", function (event) {
-    if (!chatbot || !panel.hidden || !event.isPrimary || event.button !== 0) return;
+    if (!chatbot || !panel.hidden || !event.isPrimary || event.button !== 0)
+      return;
 
     const bounds = chatbot.getBoundingClientRect();
     dragState = {
@@ -608,8 +788,20 @@
 
     dragState.moved = true;
     chatbot.classList.add("is-dragging");
-    const left = Math.max(0, Math.min(window.innerWidth - chatbot.offsetWidth, dragState.left + deltaX));
-    const top = Math.max(0, Math.min(window.innerHeight - chatbot.offsetHeight, dragState.top + deltaY));
+    const left = Math.max(
+      0,
+      Math.min(
+        window.innerWidth - chatbot.offsetWidth,
+        dragState.left + deltaX,
+      ),
+    );
+    const top = Math.max(
+      0,
+      Math.min(
+        window.innerHeight - chatbot.offsetHeight,
+        dragState.top + deltaY,
+      ),
+    );
     chatbotOffsetX = dragState.offsetX + left - dragState.left;
     chatbotOffsetY = dragState.offsetY + top - dragState.top;
     chatbot.style.setProperty("--chatbot-offset-x", chatbotOffsetX + "px");
@@ -654,7 +846,8 @@
   if (voiceOutputButton) {
     if (!window.speechSynthesis || !window.SpeechSynthesisUtterance) {
       voiceOutputButton.disabled = true;
-      voiceOutputButton.title = "Spoken replies are not supported in this browser";
+      voiceOutputButton.title =
+        "Spoken replies are not supported in this browser";
       voiceOutputButton.setAttribute("aria-label", voiceOutputButton.title);
     }
     voiceOutputButton.addEventListener("click", function () {
@@ -666,8 +859,13 @@
     soundToggle.addEventListener("click", function () {
       soundEnabled = !soundEnabled;
       soundToggle.setAttribute("aria-pressed", String(soundEnabled));
-      soundToggle.setAttribute("aria-label", soundEnabled ? "Mute chat sounds" : "Enable chat sounds");
-      soundToggle.title = soundEnabled ? "Mute chat sounds" : "Enable chat sounds";
+      soundToggle.setAttribute(
+        "aria-label",
+        soundEnabled ? "Mute chat sounds" : "Enable chat sounds",
+      );
+      soundToggle.title = soundEnabled
+        ? "Mute chat sounds"
+        : "Enable chat sounds";
       soundToggle.innerHTML = soundEnabled
         ? '<i class="fa-solid fa-bell" aria-hidden="true"></i>'
         : '<i class="fa-solid fa-bell-slash" aria-hidden="true"></i>';
@@ -690,7 +888,9 @@
         micButton.setAttribute("aria-pressed", "true");
         micButton.setAttribute("aria-label", "Stop voice input");
         micButton.title = "Stop voice input";
-        setVoiceStatus("Listening. Speak your question, then tap the microphone to stop.");
+        setVoiceStatus(
+          "Listening. Speak your question, then tap the microphone to stop.",
+        );
       });
 
       recognition.addEventListener("result", function (event) {
@@ -700,11 +900,12 @@
       });
 
       recognition.addEventListener("error", function (event) {
-        const message = event.error === "not-allowed"
-          ? "Microphone access was blocked. Allow microphone access in your browser settings."
-          : event.error === "no-speech"
-            ? "No speech detected. Tap the microphone to try again."
-            : "Voice input could not start. Please try again.";
+        const message =
+          event.error === "not-allowed"
+            ? "Microphone access was blocked. Allow microphone access in your browser settings."
+            : event.error === "no-speech"
+              ? "No speech detected. Tap the microphone to try again."
+              : "Voice input could not start. Please try again.";
         setVoiceStatus(message);
       });
 
