@@ -40,11 +40,14 @@ app.get("/seat-matrix", (req, res) => {
     });
   
 });
-app.get("/bca", (req, res) => {
+app.get("/programme/bca", (req, res) => {
     res.render("pages/bca-resources", {
         title: "BCA Resources | GB College Ramgarh",
         description: "BCA syllabus, examination papers, assignment front page, uniform, and fee information for Gram Bharti College, Ramgarh."
     });
+});
+app.get("/bca", (req, res) => {
+    res.redirect(301, "/programme/bca");
 });
 app.get("/pyq/bca", (req, res) => {
     res.render("pages/pyq/bca", {

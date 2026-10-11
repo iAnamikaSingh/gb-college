@@ -1,17 +1,21 @@
 .bca-resources {
   width: 100%;
-  max-width: 1000px;
-  margin: 1.5rem auto 3rem;
+  max-width: 1120px;
+  margin: 1.25rem auto 3rem;
   color: #26374b;
 }
 
 .bca-resources-header {
-  padding-bottom: 1.25rem;
+  display: grid;
+  grid-template-columns: minmax(0, 1.5fr) minmax(210px, 0.8fr);
+  align-items: end;
+  gap: 2rem;
+  padding: 0.5rem 0 1.5rem;
   border-bottom: 1px solid #dce5e7;
 }
 
 .bca-resources-eyebrow {
-  margin-bottom: 0.35rem;
+  margin: 0 0 0.55rem;
   color: #176b66;
   font-size: 0.75rem;
   font-weight: 700;
@@ -19,35 +23,72 @@
 }
 
 .bca-resources-header h1 {
+  margin: 0;
   color: #17243b;
-  font-size: 2rem;
+  font-size: 2.25rem;
   line-height: 1.2;
 }
 
-.bca-resources-header > p:last-child {
+.bca-header-copy > p:last-child {
   max-width: 650px;
-  margin-top: 0.55rem;
+  margin: 0.7rem 0 0;
   color: #626e78;
   line-height: 1.6;
 }
 
-.bca-resource-jump {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.55rem;
-  padding: 1rem 0;
+.bca-program-facts {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  border-top: 1px solid #dce5e7;
   border-bottom: 1px solid #dce5e7;
+}
+
+.bca-program-facts div {
+  display: grid;
+  gap: 0.25rem;
+  padding: 0.75rem 0.6rem;
+}
+
+.bca-program-facts div + div {
+  border-left: 1px solid #dce5e7;
+}
+
+.bca-program-facts dt {
+  color: #626e78;
+  font-size: 0.7rem;
+}
+
+.bca-program-facts dd {
+  color: #17243b;
+  font-size: 0.95rem;
+  font-weight: 700;
+}
+
+.bca-resource-jump {
+  position: static;
+  display: flex;
+  width: 100%;
+  min-height: 0;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 0.5rem;
+  padding: 0.9rem 0;
+  border-bottom: 1px solid #dce5e7;
+  background: transparent;
+  box-shadow: none;
+  z-index: auto;
 }
 
 .bca-resource-jump a {
   display: inline-flex;
-  min-height: 40px;
+  min-height: 42px;
   align-items: center;
   gap: 0.5rem;
   padding: 0.5rem 0.75rem;
   border: 1px solid #d5e3e1;
-  border-radius: 6px;
-  background: #fff;
+  border-radius: 5px;
+  background: #f7faf9;
   color: #225752;
   font-size: 0.83rem;
   font-weight: 600;
@@ -68,31 +109,61 @@
 
 .bca-resource-sections {
   display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.25rem;
+  padding-top: 1.4rem;
 }
 
 .bca-resource-section {
-  display: grid;
-  grid-template-columns: 42px minmax(0, 1fr);
-  gap: 1rem;
-  padding: 1.25rem 0;
-  border-bottom: 1px solid #e3e9eb;
+  display: flex;
+  min-width: 0;
+  align-items: flex-start;
+  gap: 1.1rem;
+  padding: 1.35rem;
+  border: 1px solid #dce5e7;
+  border-radius: 7px;
+  background: #fff;
+  box-shadow: 0 3px 12px rgb(23 36 59 / 4%);
   scroll-margin-top: 100px;
+}
+
+.bca-resource-section-fees {
+  grid-column: 1 / -1;
 }
 
 .bca-resource-icon {
   display: grid;
   width: 40px;
   height: 40px;
+  flex: 0 0 auto;
   place-items: center;
-  border-radius: 8px;
+  border-radius: 6px;
   background: #eaf5f2;
   color: #176b66;
 }
 
+.bca-resource-copy {
+  display: flex;
+  min-width: 0;
+  flex: 1;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.6rem;
+}
+
+.bca-resource-kicker {
+  margin: 0 !important;
+  color: #176b66 !important;
+  font-size: 0.68rem !important;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
 .bca-resource-section h2 {
-  margin: 0 0 0.35rem;
+  margin: 0;
   color: #17243b;
-  font-size: 1.05rem;
+  font-size: 1.08rem;
+  line-height: 1.35;
 }
 
 .bca-resource-section p {
@@ -103,23 +174,19 @@
   line-height: 1.6;
 }
 
-.bca-resource-section .bca-fee-disclaimer {
-  margin-bottom: 0.8rem;
-}
-
 .bca-fee-breakdown {
   display: grid;
-  max-width: 640px;
+  max-width: 760px;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 0.55rem 1.5rem;
-  margin: 0 0 0.8rem;
+  gap: 0 1.5rem;
+  margin: 0.15rem 0 0.35rem;
 }
 
 .bca-fee-breakdown div {
   display: flex;
   justify-content: space-between;
   gap: 0.75rem;
-  padding: 0.55rem 0;
+  padding: 0.6rem 0;
   border-bottom: 1px solid #e3e9eb;
   font-size: 0.84rem;
 }
@@ -134,13 +201,49 @@
   text-align: right;
 }
 
-.bca-resource-section .bca-fee-total,
-.bca-resource-section .bca-fee-caution {
-  margin-top: 0.6rem;
+.bca-fee-summary {
+  display: grid;
+  gap: 0.35rem;
+  margin-top: 0.15rem;
+  padding: 0.7rem 0 0.7rem 0.85rem;
+  border-left: 3px solid #176b66;
 }
 
-.bca-resource-section .bca-fee-caution {
+.bca-resource-section .bca-fee-summary p {
+  max-width: none;
+}
+
+.bca-fee-summary strong {
+  color: #17243b;
+}
+
+.bca-resource-section .bca-fee-note {
+  margin-top: 0.1rem;
   color: #76541e;
+  font-size: 0.82rem;
+}
+
+.bca-uniform-list {
+  display: grid;
+  gap: 0.6rem;
+  margin-top: 0.1rem;
+}
+
+.bca-uniform-list div {
+  display: grid;
+  grid-template-columns: 3.5rem minmax(0, 1fr);
+  gap: 0.6rem;
+  font-size: 0.86rem;
+  line-height: 1.5;
+}
+
+.bca-uniform-list dt {
+  color: #17243b;
+  font-weight: 700;
+}
+
+.bca-uniform-list dd {
+  color: #626e78;
 }
 
 .bca-resource-link {
@@ -167,14 +270,27 @@
 }
 
 @media (max-width: 600px) {
+  .bca-resources-header {
+    grid-template-columns: 1fr;
+    gap: 1.2rem;
+  }
+
   .bca-resources-header h1 {
-    font-size: 1.65rem;
+    font-size: 1.8rem;
+  }
+
+  .bca-resource-sections {
+    grid-template-columns: 1fr;
+    gap: 0.9rem;
+  }
+
+  .bca-resource-section-fees {
+    grid-column: auto;
   }
 
   .bca-resource-section {
-    grid-template-columns: 34px minmax(0, 1fr);
-    gap: 0.75rem;
-    padding: 1rem 0;
+    gap: 0.7rem;
+    padding: 1.05rem;
   }
 
   .bca-resource-icon {
@@ -186,6 +302,16 @@
   .bca-fee-breakdown {
     grid-template-columns: 1fr;
     gap: 0;
+  }
+
+  .bca-resource-section .paper-actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .bca-resource-section .paper-button {
+    white-space: normal;
+    text-align: center;
   }
 }
 
