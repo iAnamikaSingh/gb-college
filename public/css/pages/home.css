@@ -14,13 +14,13 @@
   row-gap: 24px;
 }
 .recognition-content a {
-  color: #1d4ed8;
+  color: var(--color-primary);
   text-decoration: none;
   transition: color 0.3s ease, text-decoration 0.3s ease;
 }
 
 .recognition-content a:hover {
-  color: #dc2626;
+  color: var(--color-primary-strong);
   text-decoration: underline;
 }
 .map-embed {
@@ -41,14 +41,15 @@ button{
   border:none;
 }
 #locate-btn{
-  background-color: #fabd15;
+  background-color: var(--color-primary);
+  color: #ffffff;
   border-radius: 0.5rem;
   width: min(100%, 400px);
   align-self: center;
   transition-duration: 0.6s ;
 }
 #locate-btn:hover{
-  background-color: #e5a900;
+  background-color: var(--color-primary-strong);
   transform: translateY(-2px);
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }
@@ -59,7 +60,7 @@ button{
 }
 
 #distance-result strong {
-  color: #166534;
+  color: var(--color-primary-strong);
   font-weight: 700;
 }
 
@@ -68,7 +69,7 @@ button{
   align-items: center;
   gap: 0.4rem;
   margin-left: 0.4rem;
-  color: #1d4ed8;
+  color: var(--color-primary);
   font-weight: 600;
   text-decoration: none;
 }
@@ -94,7 +95,7 @@ button{
 
 .home-faq-eyebrow {
   margin-bottom: 0.35rem;
-  color: #187b79;
+  color: var(--color-primary);
   font-size: 0.8rem;
   font-weight: 700;
   text-transform: uppercase;
@@ -102,22 +103,22 @@ button{
 
 .home-faq-heading h2 {
   margin-bottom: 0.4rem;
-  color: #16213e;
+  color: var(--color-ink);
   font-size: 1.6rem;
   line-height: 1.25;
 }
 
 .home-faq-heading > p:last-child {
-  color: #5c6470;
+  color: var(--color-muted);
   line-height: 1.6;
 }
 
 .home-faq-list {
-  border-top: 1px solid #d9dee8;
+  border-top: 1px solid var(--color-border);
 }
 
 .home-faq-item {
-  border-bottom: 1px solid #d9dee8;
+  border-bottom: 1px solid var(--color-border);
 }
 
 .home-faq-item summary {
@@ -127,7 +128,7 @@ button{
   justify-content: space-between;
   gap: 1rem;
   padding: 0.9rem 0.25rem;
-  color: #16213e;
+  color: var(--color-ink);
   font-weight: 600;
   line-height: 1.45;
   cursor: pointer;
@@ -140,7 +141,7 @@ button{
 
 .home-faq-item summary::after {
   flex: 0 0 auto;
-  color: #187b79;
+  color: var(--color-primary);
   content: "+";
   font-size: 1.35rem;
   font-weight: 400;
@@ -152,25 +153,25 @@ button{
 
 .home-faq-item summary:focus-visible {
   border-radius: 3px;
-  outline: 3px solid #facc15;
+  outline: 3px solid var(--color-primary);
   outline-offset: 2px;
 }
 
 .home-faq-item > p {
   max-width: 72ch;
   padding: 0 2rem 1rem 0.25rem;
-  color: #5c6470;
+  color: var(--color-muted);
   line-height: 1.65;
 }
 
 .home-faq-item a {
-  color: #146462;
+  color: var(--color-primary);
   font-weight: 600;
   text-underline-offset: 3px;
 }
 
 .home-faq-item a:hover {
-  color: #0f5250;
+  color: var(--color-primary-strong);
 }
 
 @media(max-width:800px){

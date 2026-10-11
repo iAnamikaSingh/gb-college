@@ -7,6 +7,20 @@
 @import "pages/bca-resources.css";
 @import "chatbot.css";
 
+:root {
+    --color-ink: #17243b;
+    --color-text: #26374b;
+    --color-muted: #626e78;
+    --color-primary: #176b66;
+    --color-primary-strong: #10524f;
+    --color-primary-dark: #103f42;
+    --color-primary-soft: #eaf5f2;
+    --color-border: #dce5e7;
+    --color-surface: #ffffff;
+    --color-surface-muted: #f4f8f7;
+    --color-accent: #facc15;
+}
+
 /* Remove default browser spacing */
 * {
     margin: 0;
@@ -20,6 +34,7 @@ html, body{
 
 body {
     font-family: "Poppins", sans-serif;
+    color: var(--color-text);
     display: flex;
     min-height: 100vh;
     flex-direction: column;
@@ -31,10 +46,21 @@ main{
     flex-direction: column;  
     padding:0 100px;
     flex:1;
-    
+    animation: siteEntry 420ms ease-out both;
+}
+
+@keyframes siteEntry {
+    from {
+        opacity: 0;
+        transform: translateY(8px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 h1{
-    color: #555454;
+    color: var(--color-ink);
 }
 
 
@@ -55,7 +81,7 @@ h1{
         gap: 0;
         width: 220px;
         padding: 10px;
-        background-color: #ffffff;
+        background-color: var(--color-surface);
         box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
     }
 
@@ -75,4 +101,10 @@ h1{
     th, td{
         padding:6px;
     }
-} 
+}
+
+@media (prefers-reduced-motion: reduce) {
+    main {
+        animation: none;
+    }
+}

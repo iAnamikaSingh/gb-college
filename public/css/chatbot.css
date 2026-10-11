@@ -1,11 +1,11 @@
 .site-chatbot {
-  --chat-ink: #17243b;
-  --chat-muted: #6b7280;
-  --chat-teal: #176b66;
-  --chat-teal-dark: #10524f;
-  --chat-border: #dce5e7;
-  --chat-paper: #ffffff;
-  --chat-user-bubble: #e3f4f0;
+  --chat-ink: var(--color-ink);
+  --chat-muted: var(--color-muted);
+  --chat-teal: var(--color-primary);
+  --chat-teal-dark: var(--color-primary-strong);
+  --chat-border: var(--color-border);
+  --chat-paper: var(--color-surface);
+  --chat-user-bubble: var(--color-primary-soft);
   position: fixed;
   right: 1.25rem;
   bottom: 1.25rem;
@@ -104,7 +104,7 @@
   height: 15px;
   border: 3px solid #fff;
   border-radius: 50%;
-  background: #35b779;
+  background: var(--color-primary);
   z-index: 2;
 }
 
@@ -220,8 +220,8 @@
   width: 7px;
   height: 7px;
   border-radius: 50%;
-  background: #67e8a5;
-  box-shadow: 0 0 0 3px rgb(103 232 165 / 14%);
+  background: #a8ded5;
+  box-shadow: 0 0 0 3px rgb(168 222 213 / 14%);
 }
 
 .site-chat-close {
@@ -342,13 +342,13 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  background: #315a76;
+  background: var(--color-primary);
   color: #fff;
   font-size: 0.7rem;
 }
 
 .site-chat-message-user .site-chat-sender {
-  color: #275d58;
+  color: var(--color-primary-strong);
   text-align: right;
 }
 

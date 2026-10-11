@@ -15,26 +15,26 @@
   font-weight: 700;
   margin: 0;
   line-height: 1;
-  color: #121236;
+  color: var(--color-ink);
 }
 
 .error-page h2 {
   font-size: 1.5rem;
   font-weight: 500;
   margin: 15px 0 20px;
-  color: #334155;
+  color: var(--color-text);
 }
 
 .error-page i {
   font-size: 4rem;
   margin-bottom: 25px;
-  color: #64748b;
+  color: var(--color-muted);
 }
 
 .error-page a {
   display: inline-block;
   padding: 12px 24px;
-  background-color: #facc15;;
+  background-color: var(--color-primary);
   color: #ffffff;
   text-decoration: none;
   border-radius: 6px;
@@ -44,7 +44,7 @@
 }
 
 .error-page a:hover {
-  background-color: #e9bf18;;
+  background-color: var(--color-primary-strong);
 }
 
 /* Mobile */

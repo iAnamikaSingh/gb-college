@@ -433,35 +433,35 @@
     if (/syllabus|curriculum/.test(text)) {
       return {
         text: "The BCA syllabus is available to view or download as a PDF.",
-        links: [{ label: "View BCA syllabus ↗", href: "/programme/bca#syllabus" }],
+        links: [{ label: "View BCA syllabus ↗", href: "/programs/bca#syllabus" }],
       };
     }
 
     if (/assignment|front page|cover page/.test(text)) {
       return {
         text: "The BCA resources page has a combined PDF with two assignment front pages, for use with any semester.",
-        links: [{ label: "Assignment front pages ↗", href: "/programme/bca#assignment-front-page" }],
+        links: [{ label: "Assignment front pages ↗", href: "/programs/bca#assignment-front-page" }],
       };
     }
 
     if (/uniform|dress code/.test(text)) {
       return {
         text: "The listed uniform is black pants, white shirt, black shoes and white socks for boys; black salwar, white suit and black dupatta for girls. The listed boys' outfit is also an option.",
-        links: [{ label: "View BCA uniform details ↗", href: "/programme/bca#uniform" }],
+        links: [{ label: "View BCA uniform details ↗", href: "/programs/bca#uniform" }],
       };
     }
 
     if (/\bbca\b/.test(text) && /how many semesters|number of semesters/.test(text)) {
       return {
         text: "BCA is a three-year programme across six semesters. The current question-paper archive includes Semesters 1 and 2.",
-        links: [{ label: "BCA resources ↗", href: "/programme/bca" }],
+        links: [{ label: "BCA resources ↗", href: "/programs/bca" }],
       };
     }
 
     if (/\bbca\b/.test(text) && /duration|how long|years/.test(text)) {
       return {
         text: "BCA is a three-year undergraduate programme across six semesters.",
-        links: [{ label: "BCA resources ↗", href: "/programme/bca" }],
+        links: [{ label: "BCA resources ↗", href: "/programs/bca" }],
       };
     }
 
@@ -497,7 +497,7 @@
       return {
         text: "For the 2025–2028 batch, estimated semester fees total ₹68,500–₹80,500. Including exams at ₹1,000 per semester, the estimate is ₹74,500–₹86,500 if that rate stays unchanged. These are not official current rates; confirm the exact fees with the BCA HOD.",
         links: [
-          { label: "View BCA fee estimate ↗", href: "/programme/bca#fees" },
+          { label: "View BCA fee estimate ↗", href: "/programs/bca#fees" },
           { label: "Official college website ↗", href: "https://gbcramgarh.in/", external: true },
         ],
       };
@@ -517,7 +517,7 @@
     if (/program|course|degree|\bbca\b|\bbba\b|\bb\.?a\.?\b|\bb\.?sc\.?\b|\bb\.?com\.?\b/.test(text)) {
       return {
         text: "Here's the quick overview: B.A., B.Sc., and B.Com. are listed as four-year programmes; BCA and BBA as three-year programmes.",
-        links: [{ label: "Explore programmes ↗", href: "/programs" }, { label: "BCA resources ↗", href: "/programme/bca" }],
+        links: [{ label: "Explore programmes ↗", href: "/programs" }, { label: "BCA resources ↗", href: "/programs/bca" }],
       };
     }
 

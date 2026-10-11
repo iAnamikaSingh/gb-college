@@ -10,7 +10,7 @@
   align-items: center;
   justify-content: center;
   gap: 10px;
-  background-color:aliceblue;
+  background-color: var(--color-primary-soft);
 }
 .program-card:hover {
   box-shadow: 24px 24px 10px rgba(0, 0, 0, 0.1);
